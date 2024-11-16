@@ -1,0 +1,30 @@
+/* General style */
+body {
+    font-family: sans-serif, arial;
+    background-color: #F3F3E0;
+}
+
+.bg-yellow {
+    background-color: #CBD2A4;
+}
+
+.bg-brown {
+    background-color: #5e4a3c;
+}
+
+/* Footer */
+footer h5 {
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+footer ul li {
+    color: #f4f0e5;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.copyright {
+    text-align: center;
+    margin-top: 30px;
+}

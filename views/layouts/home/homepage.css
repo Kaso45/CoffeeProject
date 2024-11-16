@@ -1,0 +1,30 @@
+/* Hero */
+.hero-section {
+    color: #ffffff;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-blend-mode: overlay;
+}
+
+/* Main content */
+.card-title, .card-text {
+    color: #333333;
+}
+
+.card {
+    border: none;
+}
+
+.btn-gray {
+    background-color: lightgray;
+}
+
+.btn-gray:hover {
+    background-color: rgb(220, 219, 219);
+}
+
+.btn-gray:active {
+    background-color: rgb(230, 228, 228);
+}

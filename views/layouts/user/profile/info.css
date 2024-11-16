@@ -1,0 +1,13 @@
+/* General style */
+body {
+  font-family: sans-serif, arial;
+  background-color: #F3F3E0;
+}
+
+.bg-yellow {
+  background-color: #CBD2A4;
+}
+
+.bg-brown {
+  background-color: #5e4a3c;
+}
