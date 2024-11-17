@@ -6,32 +6,27 @@
     <title>The Coffee Corner</title>
     <link rel="stylesheet" href="register.css">
     <link rel="stylesheet" href="/public/css/general.css">
-    <link rel="stylesheet" href="/public/css/general.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
 </head>
 <body>
-    <!--Navbar-->
+    <!-- Navbar -->
     <header>
-        <nav class="navbar navbar-expand-md navbar-dark bg-brown">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-brown px-3">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">
-                    <img src="/public/images/logo.png" alt="The Coffee Corner logo" width="50" height="50">
+                    <img src="/public/images/logo.png" alt="The Coffee Corner logo" width="50" height="50" class="img-fluid">
                     <span class="navbar-text">The Coffee Corner</span>
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarContent">
                     <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Contact</a>
-                        </li>
+                        <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Products</a>
+                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Products</a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="#">Beans</a></li>
                                 <li><a class="dropdown-item" href="#">Grounds</a></li>
@@ -41,22 +36,10 @@
                             </ul>
                         </li>
                     </ul>
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="#">
-                                <i class="bi bi-search"></i>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="#">
-                                <i class="bi bi-person"></i>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="#">
-                                <i class="bi bi-bag"></i>
-                            </a>
-                        </li>
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-search"></i></a></li>
+                        <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-person"></i></a></li>
+                        <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-bag"></i></a></li>
                     </ul>
                 </div>
             </div>
@@ -65,30 +48,30 @@
 
     <!-- Register Section -->
     <main>
-        <div class="container m-5">
+        <div class="container-fluid my-5">
             <div class="row justify-content-center">
-                <div class="col-md-4">
+                <div class="col-lg-4 col-md-6 col-sm-8 col-10">
                     <div class="card shadow">
                         <div class="card-body">
                             <h3 class="text-center mb-4">Register</h3>
-                            <form>
+                            <form action="/register" method="POST" id="registerForm">
                                 <div class="mb-3">
                                     <label for="username" class="form-label">Username</label>
                                     <input type="text" class="form-control" id="username" placeholder="Enter your username">
                                 </div>
                                 <div class="mb-3">
                                     <label for="email" class="form-label">Email address</label>
-                                    <input type="email" class="form-control" id="email" placeholder="Enter your email">
+                                    <input type="email" class="form-control" id="registerEmail" placeholder="Enter your email">
                                 </div>
                                 <div class="mb-3">
                                     <label for="password" class="form-label">Password</label>
-                                    <input type="password" class="form-control" id="password" placeholder="Create a password">
+                                    <input type="password" class="form-control" id="registerPassword" placeholder="Create a password">
                                 </div>
                                 <div class="mb-3">
                                     <label for="confirmPassword" class="form-label">Confirm Password</label>
                                     <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm your password">
                                 </div>
-                                <button type="submit" class="btn btn-primary w-100">Register</button>
+                                <button type="submit" class="btn btn-coffee w-100">Register</button>
                                 <p class="text-center mt-3">
                                     Already have an account? <a href="/views/layouts/user/login/login.html">Login</a>
                                 </p>
@@ -101,54 +84,42 @@
     </main>
 
     <!-- Footer -->
-        <footer class="bg-brown text-light p-5">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-3 text-center ps-0">
-                        <img src="/public/images/logo.png" alt="The Coffee Corner logo" wdith="70" height="70">
-                        <h5>The Coffee Corner</h5>
-                    </div>
-                    <div class="col-md-3">
-                        <h5>Products</h5>
-                        <ul class="list-unstyled">
-                            <li>
-                                <a class="nav-link" href="#">Beans</a>
-                            </li>
-                            <li>
-                                <a class="nav-link" href="#">Grounds</a>
-                            </li>
-                            <li>
-                                <a class="nav-link" href="#">Capsules</a>
-                            </li>
-                            <li>
-                                <a class="nav-link" href="#">Brew Tools</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-md-3">
-                        <h5>Help</h5>
-                        <ul class="list-unstyled">
-                            <li>
-                                <a class="nav-link" href="#">FAQS</a>
-                            </li>
-                            <li>
-                                <a class="nav-link" href="#">Contact Us</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-md-3 pe-0">
-                        <h5>More</h5>
-                        <ul class="list-unstyled">
-                            <li>
-                                <a class="nav-link" href="#">Brew Guides</a>
-                            </li>
-                        </ul>
-                    </div>
+    <footer class="bg-brown text-light py-4">
+        <div class="container">
+            <div class="row text-center text-md-start">
+                <div class="col-md-3 mb-3">
+                    <img src="/public/images/logo.png" alt="The Coffee Corner logo" width="80" height="80" class="img-fluid mb-2">
+                    <h5>The Coffee Corner</h5>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <h5>Products</h5>
+                    <ul class="list-unstyled">
+                        <li><a class="text-light text-decoration-none" href="#">Beans</a></li>
+                        <li><a class="text-light text-decoration-none" href="#">Grounds</a></li>
+                        <li><a class="text-light text-decoration-none" href="#">Capsules</a></li>
+                        <li><a class="text-light text-decoration-none" href="#">Brew Tools</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <h5>Help</h5>
+                    <ul class="list-unstyled">
+                        <li><a class="text-light text-decoration-none" href="#">FAQs</a></li>
+                        <li><a class="text-light text-decoration-none" href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <h5>More</h5>
+                    <ul class="list-unstyled">
+                        <li><a class="text-light text-decoration-none" href="#">Brew Guides</a></li>
+                    </ul>
                 </div>
             </div>
-            <p class="copyright">&copy; 2024 The Coffee Corner. All rights reserved.</p>
-        </footer>
+            <p class="text-center mt-3">&copy; 2024 The Coffee Corner. All rights reserved.</p>
+        </div>
+    </footer>
 
+    <script src="/public/js/jquery-3.7.1.min.js"></script>
+    <script src="/public/js/main.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
