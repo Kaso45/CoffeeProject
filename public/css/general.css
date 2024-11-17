@@ -1,7 +1,7 @@
 /* General style */
 body {
     font-family: sans-serif, arial;
-    background-color: #F3F3E0;
+    background-color: #F3F3E0 !important;
 }
 
 .bg-yellow {
@@ -27,4 +27,15 @@ footer ul li {
 .copyright {
     text-align: center;
     margin-top: 30px;
+}
+
+/* Button */
+.btn-coffee {
+    background-color: #9A7E6F !important; /* Coffee brown */
+    color: white !important;
+    border: none !important;
+}
+
+.btn-coffee:hover {
+    background-color: #988378 !important;
 }
