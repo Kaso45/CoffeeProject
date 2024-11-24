@@ -10,50 +10,7 @@
   </head>
   <body>
     <!-- Navbar -->
-		<header>
-			<nav class="navbar navbar-expand-lg navbar-dark bg-brown px-3">
-				<div class="container-fluid">
-					<a class="navbar-brand" href="#">
-						<img src="/public/images/logo.png" alt="The Coffee Corner logo" width="50" height="50" class="img-fluid"/>
-						<span class="navbar-text">The Coffee Corner</span>
-					</a>
-					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
-						<span class="navbar-toggler-icon"></span>
-					</button>
-					<div class="collapse navbar-collapse" id="navbarContent">
-						<ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-							<li class="nav-item">
-								<a class="nav-link active" href="#">Home</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="#">Contact</a>
-							</li>
-							<li class="nav-item dropdown">
-								<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Products</a>
-								<ul class="dropdown-menu">
-									<li><a class="dropdown-item" href="#">Beans</a></li>
-									<li><a class="dropdown-item" href="#">Grounds</a></li>
-									<li><a class="dropdown-item" href="#">Capsules</a></li>
-									<li><hr class="dropdown-divider" /></li>
-									<li><a class="dropdown-item" href="#">Brew tools</a></li>
-								</ul>
-							</li>
-						</ul>
-						<ul class="navbar-nav ms-auto">
-							<li class="nav-item">
-								<a class="nav-link" href="#"><i class="bi bi-search"></i></a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="#"><i class="bi bi-person"></i></a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="#"><i class="bi bi-bag"></i></a>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</nav>
-		</header>
+		<div id="navbar"></div>
 
     <div class="container my-5">
       <h2 class="text-center mb-5">Shopping Cart</h2>
@@ -131,45 +88,24 @@
     </div>
 
     <!-- Footer -->
-    <footer class="bg-brown text-light p-5">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-3 text-center ps-0">
-            <img
-              src="/public/images/logo.png"
-              alt="The Coffee Corner logo"
-              wdith="70"
-              height="70"
-            />
-            <h5>The Coffee Corner</h5>
-          </div>
-          <div class="col-md-3">
-            <h5>Products</h5>
-            <ul class="list-unstyled">
-              <li><a class="nav-link" href="#">Beans</a></li>
-              <li><a class="nav-link" href="#">Grounds</a></li>
-              <li><a class="nav-link" href="#">Capsules</a></li>
-              <li><a class="nav-link" href="#">Brew Tools</a></li>
-            </ul>
-          </div>
-          <div class="col-md-3">
-            <h5>Help</h5>
-            <ul class="list-unstyled">
-              <li><a class="nav-link" href="#">FAQS</a></li>
-              <li><a class="nav-link" href="#">Contact Us</a></li>
-            </ul>
-          </div>
-          <div class="col-md-3 pe-0">
-            <h5>More</h5>
-            <ul class="list-unstyled">
-              <li><a class="nav-link" href="#">Brew Guides</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <p class="copyright">&copy; 2024 The Coffee Corner. All rights reserved.</p>
-    </footer>
+    <div id="footer"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+      fetch('/view/partials/header.html')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('navbar').innerHTML = data;
+        })
+        .catch(error => console.error('Error loading navbar:', error));
+    </script>
+    <script>
+      fetch('/view/partials/footer.html')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('footer').innerHTML = data;
+        })
+        .catch(error => console.error('Error loading navbar:', error));
+    </script>
   </body>
 </html>

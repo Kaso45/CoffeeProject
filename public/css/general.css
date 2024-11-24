@@ -5,7 +5,7 @@ body {
 }
 
 .bg-yellow {
-    background-color: #CBD2A4;
+    background-color: #CBD2A4 !important;
 }
 
 .bg-brown {
@@ -38,4 +38,27 @@ footer ul li {
 
 .btn-coffee:hover {
     background-color: #988378 !important;
+}
+
+.btn-coffee:active {
+    background-color: #9f8779 !important;
+}
+
+/* Hero */
+.hero-section {
+    color: #ffffff;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-blend-mode: overlay;
+}
+
+/* Main content */
+.card-title, .card-text {
+    color: #333333;
+}
+
+.card {
+    border: none;
 }

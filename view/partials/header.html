@@ -1,35 +1,51 @@
 <!-- Navbar -->
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-brown px-3">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <img src="/public/images/logo.png" alt="The Coffee Corner logo" width="50" height="50" class="img-fluid">
-                <span class="navbar-text">The Coffee Corner</span>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarContent">
-                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Products</a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Beans</a></li>
-                            <li><a class="dropdown-item" href="#">Grounds</a></li>
-                            <li><a class="dropdown-item" href="#">Capsules</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Brew tools</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-search"></i></a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-person"></i></a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-bag"></i></a></li>
-                </ul>
-            </div>
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/view/layouts/home/homepage.html">
+          <img src="/public/images/logo.png" alt="The Coffee Corner logo" width="50" height="50" class="img-fluid"/>
+          <span class="navbar-text">The Coffee Corner</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarContent">
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" href="/view/layouts/home/homepage.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Products</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="/view/layouts/products/beans/beans.html">Beans</a></li>
+                <li><a class="dropdown-item" href="/view/layouts/products/grounds/grounds.html">Grounds</a></li>
+                <li><a class="dropdown-item" href="/view/layouts/products/capsules/capsules.html">Capsules</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="/view/layouts/products/brew tools/brew.html">Brew tools</a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <div class="input-group">
+                <input id="searchInput" type="text" class="form-control" placeholder="Search">
+                <button class="btn btn-outline-secondary" type="button" onclick="search()">
+                  <i class="bi bi-search"></i>
+                </button>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#"><i class="bi bi-person"></i></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/view/layouts/cart/cart.html"><i class="bi bi-bag"></i></a>
+            </li>
+          </ul>
         </div>
+      </div>
     </nav>
-</header>
+  </header>
+  
