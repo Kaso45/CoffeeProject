@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frappuccino</title>
+  <link rel="icon" type="image/coffeecorner" href="/public/images/logo.png" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="/public/css/general.css">
+</head>
+<body>
+  <!--Thanh dieu huong-->
+  <div id="navbar"></div>
+
+  <!--san pham-->
+  <!--hinh giao dien-->
+  <section class="hero-section text-center py-5" style="background-image: url(/public/images/frappuccino.png);">
+    <div class="container">
+      <h1 class="display-4 text-white">Frappuccino</h1>
+    </div>
+  </section>
+  <main>
+    <div class="container-fluid">
+      <div class="row mt-4">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+          <div>
+            <h2>Description</h2>
+            <p>
+              A Frappuccino is a creamy, sweet, and chilled coffee-based beverage made popular by Starbucks. It combines coffee, milk, sweeteners, and ice, blended to a smooth, frosty consistency
+            </p>
+          </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+          <dl>
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-12 col-sm-6">
+                  <dt>
+                    <span>Ingredients</span>
+                  </dt>
+                  <dd>
+                    <ol>
+                      <li>
+                        Brewed coffee (chilled) or 1-2 shots of espresso: 1/2 cup
+                      </li>
+                      <li>
+                        Milk (dairy or non-dairy): 1/2 cup
+                      </li>
+                      <li>
+                        Sugar or sweetener: 1-2 tablespoons (to taste)
+                      </li>
+                      <li>
+                        Ice cubes: 1 to 1.5 cups
+                      </li>
+                      <li>
+                        Vanilla extract: 1/4 teaspoon (optional, for flavor)
+                      </li>
+                      <li>
+                        Whipped cream: For topping (optional)
+                      </li>
+                      <li>
+                        Syrup (chocolate, caramel, or any flavor): Optional, for sweetness and drizzle
+                      </li>
+                    </ol>
+                  </dd>
+                </div>
+                <div class="col-12 col-sm-6">
+                  <dt>
+                    <span>Equipments</span>
+                  </dt>
+                  <dd>
+                    <ol>
+                      <li>
+                        Blender
+                      </li>
+                      <li>
+                        Tall glass or mug
+                      </li>
+                    </ol>
+                  </dd>
+                </div>
+              </div>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </div>
+
+    <section class="py-3">
+      <h3>1. Prepare the Coffee</h3>
+      <ul class="m-0">
+        <li>
+          Brew strong coffee or espresso and let it cool completely. Using chilled coffee prevents the ice from melting too quickly during blending.
+        </li>
+      </ul>
+    </section>
+    
+    <section class="py-3">
+      <h3>2. Blend Ingredients</h3>
+      <ul class="m-0">
+        <li>
+          In a blender, combine chilled coffee, milk, sugar, and ice cubes.
+        </li>
+        <li>
+          Add any optional flavorings like vanilla extract or syrups.
+        </li>
+        <li>
+          Blend on high until smooth and frothy.
+        </li>
+      </ul>
+    </section>
+    
+    <section class="py-3">
+      <h3>3. Adjust Consistency</h3>
+      <ul class="m-0">
+        <li>
+          If the drink is too thick, add a splash of milk or coffee and blend again.
+        </li>
+        <li>
+          If it's too thin, add a few more ice cubes and blend.
+        </li>
+      </ul>
+    </section>
+    
+    <section class="py-3">
+      <h3>4. Serve</h3>
+      <ul class="m-0">
+        <li>
+          Pour the Frappuccino into a tall glass.
+        </li>
+        <li>
+          Top with whipped cream and drizzle with syrup if desired.
+        </li>
+      </ul>
+    </section>
+    
+  </main>
+
+  <!--footer-->
+  <div id="footer"></div>
+
+  <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script>
+    fetch('/view/partials/header.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('navbar').innerHTML = data;
+      })
+      .catch(error => console.error('Error loading navbar:', error));
+  </script>
+  <script>
+    fetch('/view/partials/footer.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('footer').innerHTML = data;
+      })
+      .catch(error => console.error('Error loading navbar:', error));
+  </script>
+</body>
+</html>

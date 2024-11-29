@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lemon Coffee</title>
+  <link rel="icon" type="image/coffeecorner" href="/public/images/logo.png" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="/public/css/general.css">
+</head>
+<body>
+  <!--Thanh dieu huong-->
+  <div id="navbar"></div>
+
+  <!--san pham-->
+  <!--hinh giao dien-->
+  <section class="hero-section text-center py-5" style="background-image: url(/public/images/lemoncoffee.png);">
+    <div class="container">
+      <h1 class="display-4 text-white">Lemon Coffee</h1>
+    </div>
+  </section>
+  <main>
+    <div class="container-fluid">
+      <div class="row mt-4">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+          <div>
+            <h2>Description</h2>
+            <p>
+              Lemon coffee is a unique and invigorating beverage that blends the robust bitterness of coffee with the zesty tang of lemon. This unexpected pairing creates a drink that is both refreshing and energizing. The deep, rich flavor of brewed coffee provides a bold base, while the citrusy brightness of lemon juice adds a crisp, tangy edge, creating a balanced yet vibrant taste profile.
+            </p>
+          </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+          <dl>
+            <dt>
+              <span>Ingredients</span>
+            </dt>
+            <dd>
+              <ol>
+                <li>
+                  1 cup of freshly brewed coffee (hot or cold, based on your preference)
+                </li>
+                <li>
+                  1-2 teaspoons of freshly squeezed lemon juice (adjust to taste)
+                </li>
+                <li>
+                  Sugar or sweetener (optional)
+                </li>
+                <li>
+                  Ice cubes (optional, for an iced version)
+                </li>
+                <li>
+                  Lemon slices (for garnish, optional)
+                </li>
+              </ol>
+            </dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+
+    <section class="py-3">
+      <h3>Hot Lemon Coffee</h3>
+      <ol class="m-0">
+        <li>
+          Brew a cup of your favorite coffee (black works best).
+        </li>
+        <li>
+          Add 1-2 teaspoons of freshly squeezed lemon juice to the coffee. Stir well.
+        </li>
+        <li>
+          Taste the mixture. If the flavor is too tangy or bitter, add sugar or a sweetener to balance it.
+        </li>
+        <li>
+          Garnish with a lemon slice if desired, and enjoy!
+        </li>
+      </ol>
+    </section>
+    
+    <section class="py-3">
+      <h3>Iced Lemon Coffee</h3>
+      <ol class="m-0">
+        <li>
+          Brew a strong cup of coffee and let it cool.
+        </li>
+        <li>
+          Fill a glass with ice cubes.
+        </li>
+        <li>
+          Pour the cooled coffee over the ice.
+        </li>
+        <li>
+          Add 1-2 teaspoons of freshly squeezed lemon juice.
+        </li>
+        <li>
+          Sweeten to taste if needed and stir well.
+        </li>
+        <li>
+          Garnish with a lemon slice or zest for a decorative touch, and serve!
+        </li>
+      </ol>
+    </section>
+    </main>
+
+  <!--footer-->
+  <div id="footer"></div>
+
+  <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script>
+    fetch('/view/partials/header.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('navbar').innerHTML = data;
+      })
+      .catch(error => console.error('Error loading navbar:', error));
+  </script>
+  <script>
+    fetch('/view/partials/footer.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('footer').innerHTML = data;
+      })
+      .catch(error => console.error('Error loading navbar:', error));
+  </script>
+</body>
+</html>

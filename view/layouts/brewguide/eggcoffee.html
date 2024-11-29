@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Egg Coffee</title>
+  <link rel="icon" type="image/coffeecorner" href="/public/images/logo.png" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="/public/css/general.css">
+</head>
+<body>
+  <!--Thanh dieu huong-->
+  <div id="navbar"></div>
+
+  <!--san pham-->
+  <!--hinh giao dien-->
+  <section class="hero-section text-center py-5" style="background-image: url(/public/images/eggcoffee.png);">
+    <div class="container">
+      <h1 class="display-4 text-white">Egg Coffee</h1>
+    </div>
+  </section>
+  <main>
+    <div class="container-fluid">
+      <div class="row mt-4">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+          <div>
+            <h2>Description</h2>
+            <p>
+              Making Vietnamese egg coffee (Cà Phê Trứng) is an indulgent treat, blending the bold flavor of coffee with a sweet, creamy, custard-like foam.
+            </p>
+          </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+          <dl>
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-12 col-sm-6">
+                  <dt>
+                    <span>Ingredients</span>
+                  </dt>
+                  <dd>
+                    <ol>
+                      <li>
+                        Coffee: 2 tablespoons of strong Vietnamese coffee or any robust dark roast coffee (brewed)
+                      </li>
+                      <li>
+                        Egg yolk: 1 large, fresh egg yolk
+                      </li>
+                      <li>
+                        Sweetened condensed milk: 2 tablespoons
+                      </li>
+                      <li>
+                        Sugar (optional): 1 teaspoon (if you like extra sweetness)
+                      </li>
+                      <li>
+                        Vanilla extract (optional): 1-2 drops
+                      </li>
+                    </ol>
+                  </dd>
+                </div>
+                <div class="col-12 col-sm-6">
+                  <dt>
+                    <span>Equipments</span>
+                  </dt>
+                  <dd>
+                    <ol>
+                      <li>
+                        A small whisk or hand mixer (a fork can also work)
+                      </li>
+                      <li>
+                        A glass or ceramic mug
+                      </li>
+                      <li>
+                        A bowl for whisking
+                      </li>
+                      <li>
+                        A Vietnamese coffee filter (phin) or any method for brewing strong coffee
+                      </li>
+                    </ol>
+                  </dd>
+                </div>
+              </div>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </div>
+
+    <section class="py-3">
+      <h3>1. Brew the coffee</h3>
+      <ul class="m-0">
+        <li>
+          Prepare a small cup of strong Vietnamese coffee using a phin filter or another method (e.g., espresso machine, French press).
+        </li>
+        <li>
+          Keep the brewed coffee hot while preparing the egg mixture.
+        </li>
+      </ul>
+    </section>
+    
+    <section class="py-3">
+      <h3>2. Separate the egg yolk</h3>
+      <ul class="m-0">
+        <li>
+          Carefully crack the egg and separate the yolk from the white. Discard or save the white for another recipe.
+        </li>
+        <li>
+          Place the yolk in a mixing bowl.
+        </li>
+      </ul>
+    </section>
+    
+    <section class="py-3">
+      <h3>3. Make the egg cream</h3>
+      <ul class="m-0">
+        <li>
+          Add the sweetened condensed milk to the yolk. If you want, add a teaspoon of sugar for extra sweetness and a drop or two of vanilla extract for flavor.
+        </li>
+        <li>
+          Whisk the mixture thoroughly using a small whisk, hand mixer, or fork. Continue until the mixture is pale, thick, and frothy (about 5 minutes).
+        </li>
+      </ul>
+    </section>
+    
+    <section class="py-3">
+      <h3>4. Assemble the egg coffee</h3>
+      <ul class="m-0">
+        <li>
+          Pour the brewed coffee into a serving cup.
+        </li>
+        <li>
+          Gently spoon the whipped egg mixture on top of the coffee. You can carefully spread it with a spoon for an even layer.
+        </li>
+      </ul>
+    </section>
+    
+    <section class="py-3">
+      <h3>5. Serve and enjoy</h3>
+      <ul class="m-0">
+        <li>
+          Serve immediately while hot. Traditionally, the cup is placed in a small bowl of hot water to keep it warm.
+        </li>
+        <li>
+          To drink, either sip through the foam or stir it lightly into the coffee for a creamy, rich experience.
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <!--footer-->
+  <div id="footer"></div>
+
+  <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script>
+    fetch('/view/partials/header.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('navbar').innerHTML = data;
+      })
+      .catch(error => console.error('Error loading navbar:', error));
+  </script>
+  <script>
+    fetch('/view/partials/footer.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('footer').innerHTML = data;
+      })
+      .catch(error => console.error('Error loading navbar:', error));
+  </script>
+</body>
+</html>

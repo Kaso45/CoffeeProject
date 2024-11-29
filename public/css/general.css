@@ -1,6 +1,6 @@
-/* General style */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+/* style tong the */
 body {
-    font-family: sans-serif, arial;
     background-color: #F3F3E0 !important;
 }
 
@@ -12,6 +12,102 @@ body {
     background-color: #5e4a3c;
 }
 
+/* nut bam */
+.btn-coffee {
+    background-color: #9A7E6F !important; /* Coffee brown */
+    color: white !important;
+    border: none !important;
+}
+
+.btn-coffee:hover {
+    background-color: #988378 !important;
+}
+
+.btn-coffee:active {
+    background-color: #9f8779 !important;
+}
+
+.btn-gray {
+    background-color: #E3DDDD !important;
+}
+
+.btn-gray:hover {
+    background-color: #e7e0e0 !important;
+}
+
+.btn-gray:active {
+    background-color: #eae3e3 !important;
+}
+/* hinh giao dien chinh */
+.hero-section {
+    background-size: cover;
+    background-position: center;
+    color: #ffffff;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-blend-mode: overlay;
+}
+
+.hero-section h1 {
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+}
+
+.hero-section p {
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+/* Main content */
+.card-title, .card-text {
+    color: #333333;
+}
+
+.card {
+    border: none;
+}
+
+/* trang lien he */
+.contact-box {
+    margin-top: 30px;
+}
+
+.required {
+    font-size: 13px;
+    color: red;
+}
+
+/* trang pha che */
+.content-wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.recipe-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.recipe-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.recipe-details {
+    padding: 20px;
+}
+
+.recipe-details h1 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+    
+ 
 /* Footer */
 footer h5 {
     font-weight: bold;
@@ -27,38 +123,4 @@ footer ul li {
 .copyright {
     text-align: center;
     margin-top: 30px;
-}
-
-/* Button */
-.btn-coffee {
-    background-color: #9A7E6F !important; /* Coffee brown */
-    color: white !important;
-    border: none !important;
-}
-
-.btn-coffee:hover {
-    background-color: #988378 !important;
-}
-
-.btn-coffee:active {
-    background-color: #9f8779 !important;
-}
-
-/* Hero */
-.hero-section {
-    color: #ffffff;
-    height: 300px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-blend-mode: overlay;
-}
-
-/* Main content */
-.card-title, .card-text {
-    color: #333333;
-}
-
-.card {
-    border: none;
 }
