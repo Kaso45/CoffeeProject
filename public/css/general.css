@@ -17,27 +17,19 @@ body {
     background-color: #9A7E6F !important; /* Coffee brown */
     color: white !important;
     border: none !important;
+    transition: 0.2s ease;
 }
 
 .btn-coffee:hover {
     background-color: #988378 !important;
+    transition: 0.2s ease;
 }
 
 .btn-coffee:active {
     background-color: #9f8779 !important;
+    transition: 0.2s ease;
 }
 
-.btn-gray {
-    background-color: #E3DDDD !important;
-}
-
-.btn-gray:hover {
-    background-color: #e7e0e0 !important;
-}
-
-.btn-gray:active {
-    background-color: #eae3e3 !important;
-}
 /* hinh giao dien chinh */
 .hero-section {
     background-size: cover;
@@ -58,7 +50,17 @@ body {
     text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
 }
 
-/* Main content */
+/*the san pham*/
+.pro-container {
+    cursor: pointer;
+    box-shadow: 10px 10px 20px rgba(0,0,0,0.2);
+    transition: 0.2s ease;
+}
+
+.pro-container:hover {
+    box-shadow: 10px 10px 20px rgba(0,0,0,0.3);
+}
+
 .card-title, .card-text {
     color: #333333;
 }
@@ -67,14 +69,58 @@ body {
     border: none;
 }
 
-/* trang lien he */
-.contact-box {
-    margin-top: 30px;
+/* trang tung san pham */
+.pro-details input {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    margin-right: 5px;
 }
 
-.required {
-    font-size: 13px;
-    color: red;
+.pro-details button {
+    padding: 10px;
+    margin-left: 5px;
+    border-radius: 10px;
+}
+
+.pro-price {
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.pro-details .rating {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+}
+
+.pro-details .star {
+    padding: 15px 0;
+}
+
+.pro-details p {
+    font-size: 17px;
+}
+
+/* trang lien he */
+.contact-details li {
+    list-style: none;
+    display: flex;
+    padding: 10px 0;
+}
+
+.contact-details li i {
+    font-size: 14px;
+    padding-right: 22px;
+}
+
+.map iframe {
+    width: 100%;
+    height: 400px;
+}
+
+.feedback {
+    display: grid;
 }
 
 /* trang pha che */
