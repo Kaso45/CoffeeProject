@@ -124,35 +124,16 @@ body {
 }
 
 /* trang pha che */
-.content-wrapper {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
+.brew-container {
+    cursor: pointer;
+    box-shadow: 10px 10px 20px rgba(0,0,0,0.2);
+    transition: 0.2s ease;
+    text-align: center;
 }
 
-.recipe-image {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
+.brew-container:hover {
+    box-shadow: 10px 10px 20px rgba(0,0,0,0.3);
 }
-
-.recipe-image img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-}
-
-.recipe-details {
-    padding: 20px;
-}
-
-.recipe-details h1 {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-}
-
-    
  
 /* Footer */
 footer h5 {
