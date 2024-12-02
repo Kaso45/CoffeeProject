@@ -129,21 +129,6 @@
   <div id="footer"></div>
 
   <script src="/public/bootstrap/js/bootstrap.bundle.js"></script>
-  <script>
-    fetch('/view/partials/header.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('navbar').innerHTML = data;
-      })
-      .catch(error => console.error('Error loading navbar:', error));
-  </script>
-  <script>
-    fetch('/view/partials/footer.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('footer').innerHTML = data;
-      })
-      .catch(error => console.error('Error loading navbar:', error));
-  </script>
+  <script src="/public/js/header-footer.js"></script>
 </body>
 </html>
