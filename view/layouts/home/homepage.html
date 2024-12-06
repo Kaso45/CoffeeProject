@@ -25,71 +25,12 @@
   <section class="py-5">
     <div class="container-fluid">
       <h2 class="mb-4">Best Seller</h2>
-      <div class="row">
 
-        <div class="col-sm-12 col-md-12 col-lg-4">
-          <div class="pro-container card mb-4">
-            <img src="/public/images/aromacraft.png" class="card-img-top" alt="AromaCraft">
-            <div class="card-body d-flex justify-content-between">
-              <div class="des">
-                <h5 class="card-title">AromaCraft</h5>
-                <div class="star">
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-half"></i>
-                </div>
-                <p class="card-text">15$</p>
-              </div>
-              <button type="button" class="btn btn-primary px-4"><i class="fs-4 bi bi-cart2"></i></button>
-            </div>
-          </div>
-        </div>
+      <!--render san pham -->
+      <div class="row" id="bestSeller"></div>
 
-        <div class="col-sm-12 col-md-12 col-lg-4">
-          <div class="pro-container card mb-4">
-            <img src="/public/images/casa.png" class="card-img-top" alt="Casa">
-            <div class="card-body d-flex justify-content-between">
-              <div class="des">
-                <h5 class="card-title">Casa</h5>
-                <div class="star">
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star"></i>
-                </div>
-                <p class="card-text">20$</p>
-              </div>
-              <button type="button" class="btn btn-primary px-4"><i class="fs-4 bi bi-cart2"></i></button>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-sm-12 col-md-12 col-lg-4">
-          <div class="pro-container card mb-4">
-            <img src="/public/images/zenbean.png" class="card-img-top" alt="ZenBean">
-            <div class="card-body d-flex justify-content-between">
-              <div class="des">
-                <h5 class="card-title">ZenBean</h5>
-                <div class="star">
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                </div>
-                <p class="card-text">20$</p>
-              </div>
-              <button type="button" class="btn btn-primary px-4"><i class="fs-4 bi bi-cart2"></i></button>
-            </div>
-          </div>
-        </div>
-
-      </div>
       <div class="d-grid gap-2 col-2 mx-auto">
-        <a href="#" class="btn btn-secondary">Discover more</a>
+        <button type="button" class="btn btn-secondary">Discover more</button>
       </div>
     </div>
   </section>
@@ -120,7 +61,7 @@
       </div>
 
       <div class="d-grid gap-2 col-2 mx-auto">
-        <a href="#" class="btn btn-secondary">More</a>
+        <a href="/view/layouts/brewguide/brewguide.html" class="btn btn-secondary">More</a>
       </div>
     </div>
   </section>
@@ -130,5 +71,7 @@
 
   <script src="/public/bootstrap/js/bootstrap.bundle.js"></script>
   <script src="/public/js/header-footer.js"></script>
+  <script src="/model/products.js"></script>
+  <script src="/public/js/index.js"></script>
 </body>
 </html>

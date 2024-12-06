@@ -51,6 +51,11 @@ body {
 }
 
 /*the san pham*/
+.pro-grid {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+}
+
 .pro-container {
     cursor: pointer;
     box-shadow: 10px 10px 20px rgba(0,0,0,0.2);
@@ -63,10 +68,6 @@ body {
 
 .card-title, .card-text {
     color: #333333;
-}
-
-.card {
-    border: none;
 }
 
 /* trang tung san pham */
