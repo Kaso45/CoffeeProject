@@ -18,7 +18,10 @@ function renderProducts(products, containerId) {
               </div>
               <p class="card-text">${(product.priceCent / 100).toFixed(2)}$</p>
             </div>
-            <button type="button" class="btn btn-primary px-4 addToCart"><i class="fs-4 bi bi-cart2"></i></button>
+            <button type="button"
+             class="btn btn-primary px-4 addToCart"
+             data-product-name="${product.name}"
+             ><i class="fs-4 bi bi-cart2"></i></button>
           </div>
         </div>
       </div>
@@ -34,17 +37,17 @@ if (currentPage === '/view/layouts/home/homepage.html') { // load sản phẩm b
     ['AromaCraft', 'Casa', 'ZenBean'].includes(product.name)
   );
   renderProducts(bestSeller, 'bestSeller');
-} else if (currentPage === `/view/layouts/products/capsules/capsules.html`) {
+} else if (currentPage === `/view/layouts/products/capsules/capsules.html`) { //load viên nén
   const capsules = products.filter(product => 
     [`capsules`].includes(product.category)
   );
   renderProducts(capsules, `productList`);
-} else if (currentPage === `/view/layouts/products/grounds/grounds.html`) {
+} else if (currentPage === `/view/layouts/products/grounds/grounds.html`) { // load rang xây
   const grounds = products.filter(product => 
     [`grounds`].includes(product.category)
   );
   renderProducts(grounds, `productList`);
-} else if (currentPage === `/view/layouts/products/beans/beans.html`) {
+} else if (currentPage === `/view/layouts/products/beans/beans.html`) { // load hạt
   const beans = products.filter(product => 
     [`beans`].includes(product.category)
   );
