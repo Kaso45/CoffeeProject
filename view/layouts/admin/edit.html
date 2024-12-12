@@ -12,7 +12,7 @@
 <body>
   <div class="container my-5">
     <h2 class="mb-4">Edit Product</h2>
-    <form id="addProductForm">
+    <form id="editProductForm">
       <div class="mb-3">
         <label for="productName" class="form-label">Product Name</label>
         <input type="text" class="form-control" id="productName" required>
@@ -25,7 +25,7 @@
       
       <div class="mb-3">
         <label for="productPrice" class="form-label">Price</label>
-        <input type="number" class="form-control" id="productPrice" min="0" required>
+        <input type="number" class="form-control" id="productPriceCent" min="0" required>
       </div>
       
       <div class="mb-3">
@@ -48,5 +48,6 @@
   </div>
 
   <script src="/public/bootstrap/js/bootstrap.bundle.js"></script>
+  <script src="edit.js"></script>
 </body>
 </html>
