@@ -1,4 +1,9 @@
-const products = [
+export function getProduct(productName) {
+  const matchingProduct = products.find(product => product.name === productName)
+  return matchingProduct;
+}
+
+export const products = [
   {
     category: `beans`,
     image: `/public/images/aromacraft.png`,

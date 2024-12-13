@@ -1,4 +1,4 @@
-async function deleteProduct(event) {
+export async function deleteProduct(event) {
     const productID = event.target.getAttribute('data-id', product._id)
     if (confirm('Are you sure you want to delete this product?')) {
         try {

@@ -1,5 +1,8 @@
+import { cart, addToCart, saveToStorage } from '../../data/cart.js';
+import { products } from '../../data/products.js';
+
 // render sản phẩm
-const currentPage = window.location.pathname;
+const currentPage = window.location.pathname; 
 
 function renderProducts(products, containerId) {
   const productList = document.getElementById(containerId);
@@ -68,3 +71,17 @@ function generateStarRating(rating) {
   }
   return stars;
 }
+
+export function updateCartQuantity() {
+  const cartQuantity = cart.reduce((total, cartItem) => total + cartItem.quantity, 0);
+  document.querySelector(`.cart-quantity`).innerHTML = cartQuantity;
+}
+
+document.querySelectorAll(`.addToCart`)
+  .forEach((button) => {
+    button.addEventListener(`click`, () => {
+      const productName = button.dataset.productName;
+      addToCart(productName);
+      updateCartQuantity();
+    });
+  });
