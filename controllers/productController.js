@@ -4,12 +4,37 @@ const Product = require('../models/Product');
 // Lấy tất cả sản phẩm
 exports.getProducts = async (req, res) => {
   try {
-    const products = await Product.find();
-    res.status(200).json(products);  // Trả về sản phẩm dưới dạng JSON
+    const products = await Product.find({ category: "beans" });
+    res.render('layouts/products/beans/beans', { products });
   } catch (error) {
     res.status(500).json({ message: 'Error retrieving products' });
   }
 };
+
+// lấy grounds:
+exports.getGrounds = async (req, res) => {
+  try { 
+   const products = await Product.find({category: "grounds" }) 
+   res.render('layouts/products/grounds/grounds', {products})
+    
+  } catch (error) {
+    res.status(500).json({ message: 'Error retrieving products' });
+
+    
+  }
+}
+// lấy capsules:
+exports.getCapsules = async (req, res) => {
+  try { 
+   const products = await Product.find({category: "capsules" }) 
+   res.render('layouts/products/capsules/capsules', {products})
+    
+  } catch (error) {
+    res.status(500).json({ message: 'Error retrieving products' });
+
+    
+  }
+}
 
 // Thêm sản phẩm mới
 exports.addProduct = async (req, res) => {
