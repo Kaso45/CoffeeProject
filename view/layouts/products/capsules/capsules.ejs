@@ -17,8 +17,16 @@
   <main>
     <h1 class="text-center p-5">CAPSULE</h1>
     <div class="container-fluid">
-      <div class="row" id="productList"></div>
-    </div>
+      <% products.forEach(product => { %>
+        <li>
+          <h2><%= product.name %></h2>
+          <p>image: <%= product.image %></p>
+          <p>Category: <%= product.category %></p>
+          <p>Name: <%= product.name %></p>
+          <p>Price: <%= product.priceCent %> USD</p>
+          <p>Description: <%= product.de %></p>
+        </li>
+      <% }); %>    </div>
   </main>
 
   <!-- Footer -->

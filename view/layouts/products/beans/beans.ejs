@@ -19,8 +19,17 @@
     <div class="container-fluid">
 
       <!--render san pham-->
-      <div class="row" id="productList"></div>
-
+      <!-- <div class="row" id="productList"></div> -->
+      <% products.forEach(product => { %>
+        <li>
+          <h2><%= product.name %></h2>
+          <p>image: <%= product.image %></p>
+          <p>Category: <%= product.category %></p>
+          <p>Name: <%= product.name %></p>
+          <p>Price: <%= product.priceCent %> USD</p>
+          <p>Description: <%= product.de %></p>
+        </li>
+      <% }); %>
     </div>
   </div>
 
