@@ -5,7 +5,7 @@ const cors = require('cors');
 const app = express();
 const productRoutes = require('./routes/productRoutes');
 // Kết nối MongoDB
-mongoose.connect('mongodb://localhost:27017/product-management', {
+mongoose.connect('mongodb+srv://project-management:12345nhom4@cluster0.kgyvd.mongodb.net/products?retryWrites=true&w=majority&appName=Cluster0', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 }).then(() => {
