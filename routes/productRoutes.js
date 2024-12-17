@@ -11,7 +11,7 @@ router.get('/products/capsules', productController.getCapsules);
 
 // 3 types
 router.get('/products/productCategory', (res,req) => {
-    res.render('layouts/products/products category')
+    res.render('layouts/products/productsCategory')
 })
 
 //////// từng sản phẩm 
@@ -76,9 +76,9 @@ router.get('/products/grounds/zenbean' ,(res,req) => {
 
 // home
 router.get('/', (res,req) => {
-    res.render('layouts/home/homepages')
+    res.render('layouts/home/homepage')
 })
-// BESTseoler
+// BEST seller
 router.get('/bestseller', (res,req) => {
     res.render('layouts/bestseller/bestseller')
 })

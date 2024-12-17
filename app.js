@@ -1,9 +1,11 @@
+const path = require(`path`);
 const express = require('express');
 const mongoose = require('mongoose');
 const methodOverride = require('method-override');
-const cors = require('cors');
 const app = express();
-const productRoutes = require('./routes/productRoutes');
+const route = require('./routes');
+const PORT = 3000;
+
 // Kết nối MongoDB
 mongoose.connect('mongodb://localhost:27017/product-management', {
   useNewUrlParser: true,
@@ -14,26 +16,20 @@ mongoose.connect('mongodb://localhost:27017/product-management', {
   console.log('MongoDB connection error: ', err);
 });
 
+//chạy file csscss
+app.use(express.static(path.join(__dirname, `public`)));
 
+app.use(express.urlencoded({extended:true}));
+app.use(express.json());
 
-// app.use(cors());  // Cho phép frontend ở domain khác gửi request
-// app.use(express.json());  // Parse JSON body
+//template engine
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'view'));
 
-app.use(cors({
-  origin: 'http://127.0.0.1:5500/view/layouts/admin/admin.html', 
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-}));
-
-
-// Sử dụng routes API
-app.use('/api', productRoutes);
-
-
-
+//khởi tạo routes
+route(app);
 
 // Khởi chạy server
-const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
