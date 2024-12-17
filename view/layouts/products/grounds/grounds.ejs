@@ -1,41 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Grounds</title>
-  <link rel="icon" type="image/coffeecorner" href="/public/images/logo.png"/>
-  <link rel="stylesheet" href="/public/css/general.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <link rel="stylesheet" href="/public/bootstrap/css/bootstrap.css">
-</head>
-<body>
-  <!--thanh dieu huong-->
-  <div id="navbar"></div>
+<!--san pham-->
+<h1 class="text-center p-5">GROUNDS</h1>
+<div class="container-fluid">
 
-  <!--san pham-->
-  <main>
-    <h1 class="text-center p-5">GROUNDS</h1>
-    <div class="container-fluid">
+  <% products.forEach(product => { %>
+    <li>
+      <h2><%= product.name %></h2>
+      <p>image: <%= product.image %></p>
+      <p>Category: <%= product.category %></p>
+      <p>Name: <%= product.name %></p>
+      <p>Price: <%= product.priceCent %> USD</p>
+      <p>Description: <%= product.de %></p>
+    </li>
+  <% }); %>
+</div>
 
-      <% products.forEach(product => { %>
-        <li>
-          <h2><%= product.name %></h2>
-          <p>image: <%= product.image %></p>
-          <p>Category: <%= product.category %></p>
-          <p>Name: <%= product.name %></p>
-          <p>Price: <%= product.priceCent %> USD</p>
-          <p>Description: <%= product.de %></p>
-        </li>
-      <% }); %>
-    </div>
-  </div>
-
-  <!-- Footer -->
-  <div id="footer"></div>
-
-  <script src="/public/bootstrap/js/bootstrap.bundle.js"></script>
-  <script src="/public/js/header-footer.js"></script>
-  <script type="module" src="/public/js/index.js"></script>
-</body>
-</html>
+<script type="module" src="/public/js/index.js"></script>

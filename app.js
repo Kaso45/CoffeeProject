@@ -1,9 +1,14 @@
+const path = require(`path`);
 const express = require('express');
 const mongoose = require('mongoose');
 const methodOverride = require('method-override');
-const cors = require('cors');
 const app = express();
-const productRoutes = require('./routes/productRoutes');
+const expressLayouts = require('express-ejs-layouts');
+const PORT = 3000;
+
+// import những thứ đã xuất ra từ /routes/index.js
+const route = require('./routes');
+
 // Kết nối MongoDB
 mongoose.connect('mongodb+srv://project-management:12345nhom4@cluster0.kgyvd.mongodb.net/products?retryWrites=true&w=majority&appName=Cluster0', {
   useNewUrlParser: true,
@@ -14,26 +19,24 @@ mongoose.connect('mongodb+srv://project-management:12345nhom4@cluster0.kgyvd.mon
   console.log('MongoDB connection error: ', err);
 });
 
+//tro toi file css
+app.use(express.static(path.join(__dirname, `public`)));
 
+app.use(express.urlencoded({extended:true}));
+app.use(express.json());
 
-// app.use(cors());  // Cho phép frontend ở domain khác gửi request
-// app.use(express.json());  // Parse JSON body
+//template engine
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'view'));
 
-app.use(cors({
-  origin: 'http://127.0.0.1:5500/view/layouts/admin/admin.html', 
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-}));
+//epress-ejs-layout
+app.use(expressLayouts);
+app.set('layout', 'layouts/main');
 
-
-// Sử dụng routes API
-app.use('/api', productRoutes);
-
-
-
+//dòng code là bao gồm tất cả routes của các trang (ctrl+click vô chữ route để dẫn tới /routes/index.js)
+route(app);
 
 // Khởi chạy server
-const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
