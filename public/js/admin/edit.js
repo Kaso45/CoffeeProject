@@ -19,13 +19,13 @@ const updateProduct= {
 
 
 
-try { const response = await fetch('http://localhost:3000/products/${productId}', {
+try { const response = await fetch('../../controllers/productController', {
 method: 'PUT',
 headers: { 'Content-Type': 'application/json' },
 body: JSON.stringify(updateProduct),
 })
 if (response.ok) {
-    alert('Product updated successfully!');
+    alert('Successfully!');
   } else {
     throw new Error('Update failed');
   }
