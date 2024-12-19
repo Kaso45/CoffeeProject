@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -12,7 +12,7 @@
 <body>
   <div class="container my-5">
     <h2 class="mb-4">Edit Product</h2>
-    <form id="editProductForm">
+    <form id="editProductForm" action="/admin/edit-product/<%= product._id %>" method="POST">
       <div class="mb-3">
         <label for="productName" class="form-label">Product Name</label>
         <input type="text" class="form-control" id="productName" required>
@@ -50,4 +50,5 @@
   <script src="/public/bootstrap/js/bootstrap.bundle.js"></script>
   <script src="edit.js"></script>
 </body>
-</html>
+</html> 
+

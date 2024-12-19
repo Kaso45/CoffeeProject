@@ -114,17 +114,22 @@ router.get(`/register`, (req,res) => {
 
 
 /////// ADMIN
-router.get('/admin',  productController.getProducts);
+router.get(`/admin`,  productController.getProducts);
   
 
 
 // Thêm sản phẩm mới
 router.post('/admin/products', productController.addProduct);
 
-// Cập nhật sản phẩm
-router.put('/admin/editProducts/:id', productController.updateProduct);
+// // Cập nhật sản phẩm
+// router.put('/admin/editProducts/:id', productController.updateProduct);
 
 // Xóa sản phẩm
-router.delete('/products/:id', productController.deleteProduct);
+router.post('/delete-product/:id', productController.deleteProduct);
 
+// Route để render form edit
+router.get('/admin/edit/:id', productController.getEditProduct);
+
+// Route để cập nhật sản phẩm
+router.post('/admin/edit-product', productController.postEditProduct);
 module.exports = router;

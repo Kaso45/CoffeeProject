@@ -81,39 +81,25 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <!-- <tr>
-                    <td><img src="/public/images/capsules1.png" alt="capsules1" width="200" height="200"></td>
-                    <td>Espresso</td>
-                    <td>Capsule</td>
-                    <td>15$</td>
-                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam voluptates aspernatur ullam, id tempora laboriosam dolor iste quibusdam, officia odit accusantium ratione unde quis aut provident itaque incidunt fugiat delectus.</td>
-                    <td>
-                      <button type="button" class="btn btn-warning">edit</button>
-                      <button type="button" class="btn btn-danger">delete</button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><img src="/public/images/capsules1.png" alt="capsules1" width="200" height="200"></td>
-                    <td>Espresso</td>
-                    <td>Capsule</td>
-                    <td>15$</td>
-                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam voluptates aspernatur ullam, id tempora laboriosam dolor iste quibusdam, officia odit accusantium ratione unde quis aut provident itaque incidunt fugiat delectus.</td>
-                    <td>
-                      <button type="button" class="btn btn-warning">edit</button>
-                      <button type="button" class="btn btn-danger">delete</button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><img src="/public/images/capsules1.png" alt="capsules1" width="200" height="200"></td>
-                    <td>Espresso</td>
-                    <td>Capsule</td>
-                    <td>15$</td>
-                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam voluptates aspernatur ullam, id tempora laboriosam dolor iste quibusdam, officia odit accusantium ratione unde quis aut provident itaque incidunt fugiat delectus.</td>
-                    <td>
-                      <button type="button" class="btn btn-warning">edit</button>
-                      <button type="button" class="btn btn-danger">delete</button>
-                    </td>
-                  </tr> -->
+                  <% products.forEach(product => { %>
+                    <tr>
+                        
+                        <td><%= product.image %></td>
+                        <td><%= product.category %></td>
+                        <td><%= product.name %></td>
+                        <td><%= product.priceCent %></td>
+                        <td><%= product.de %></td>
+                        
+                        <td>
+                            <!-- Nút Edit -->
+                            <a href="/admin/edit/<%= product._id %>">Edit</a>
+                            <!-- Nút Delete -->
+                            <form action="/admin/delete-product/<%= product._id %>" method="POST" style="display: inline;">
+                                <button type="submit">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                <% }) %>
                 </tbody>
               </table>
             </div>

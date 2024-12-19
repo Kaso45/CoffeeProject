@@ -37,6 +37,7 @@ app.set('layout', 'layouts/main');
 
 // //dòng code là bao gồm tất cả routes của các trang (ctrl+click vô chữ route để dẫn tới /routes/index.js)
 // route(app);
+app.use(route)
 
 //trang home
 app.get(`/`, route);

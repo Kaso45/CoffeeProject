@@ -72,29 +72,63 @@ exports.addProduct = async (req, res) => {
   }
 };
 
-// Cập nhật sản phẩm
-exports.updateProduct = async (req, res) => {
-  try {
-    const product = await Product.findByIdAndUpdate(req.params.id, req.body, { new: true });
-    res.status(200).json(product);  // Trả về sản phẩm đã cập nhật dưới dạng JSON
-  } catch (error) {
-    res.status(400).json({ message: 'Error updating product' });
-  }
+// // Cập nhật sản phẩm
+// exports.updateProduct = async (req, res) => {
+//   try {
+//     const product = await Product.findByIdAndUpdate(req.params.id, req.body, { new: true });
+//     res.status(200).json(product);  // Trả về sản phẩm đã cập nhật dưới dạng JSON
+//   } catch (error) {
+//     res.status(400).json({ message: 'Error updating product' });
+//   }
+// };
+
+// Lấy thông tin sản phẩm để hiển thị form edit
+
+
+// Hiển thị form chỉnh sửa sản phẩm
+exports.getEditProduct = async (req, res) => {
+    try {
+        const productId = req.params.id; // Lấy ID sản phẩm từ URL
+        const product = await Product.findById(productId); // Lấy sản phẩm từ database
+        if (!product) {
+            return res.status(404).send('Product not found');
+        }
+        res.render('/layouts/admin/edit', { product }); // Render form chỉnh sửa
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Error retrieving product');
+    }
 };
+
+// Xử lý cập nhật sản phẩm
+exports.postEditProduct = async (req, res) => {
+    try {
+        const productId = req.params.id; 
+        const { name, description, price, category } = req.body; 
+        await Product.findByIdAndUpdate(productId, {
+            name,
+            description,
+            price,
+            category,
+        }); 
+        res.redirect('/layouts/admin/admin'); // Quay lại trang admin sau khi cập nhật
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Error updating product');
+    }
+};
+
+
+
 
 // Xóa sản phẩm
 exports.deleteProduct = async (req, res) => {
   try {
-    const { id } = req.params; // Lấy ID từ URL
-    const products = await Product.findByIdAndDelete(id); // Xóa sản phẩm trong MongoDB
-
-    if (!products) {
-      return res.status(404).json({ message: 'Product not found' }); // Không tìm thấy sản phẩm
-    }
-
-    res.status(200).json({ message: 'Product deleted successfully!' }); // Trả về JSON thành công
+      const productId = req.params.id; // Lấy ID từ URL
+      await Product.findByIdAndDelete(productId); // Xóa sản phẩm khỏi database
+      res.redirect('/admin'); // Quay lại trang admin
   } catch (error) {
-    console.error('Error deleting product:', error); // Log lỗi nếu có
-    res.status(500).json({ message: 'Error deleting product' }); // Trả về lỗi
+      console.error(error); // Log lỗi ra console
+      res.status(500).send('Error deleting product');
   }
 };
