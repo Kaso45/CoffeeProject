@@ -1,18 +1,27 @@
 <!--san pham-->
 <h1 class="text-center p-5">COFFEE BEANS</h1>
 <div class="container-fluid">
-
-  <!--render san pham-->
-  <% products.forEach(product => { %>
-    <li>
-      <h2><%= product.name %></h2>
-      <p>image: <%= product.image %></p>
-      <p>Category: <%= product.category %></p>
-      <p>Name: <%= product.name %></p>
-      <p>Price: <%= product.priceCent %> USD</p>
-      <p>Description: <%= product.de %></p>
-    </li>
-  <% }); %>
+  <div class="row">
+    <!--render san pham-->
+    <% products.forEach(product => { %>
+      <div class="col-12 col-sm-6 col-md-4">
+        <div class="pro-container card mb-4">
+          <img src="<%= product.image %>" class="card-img-top" alt="<%= product.name %>">
+          <div class="card-body d-flex justify-content-between">
+            <div class="des">
+              <h5 class="card-title"><%= product.name %></h5>
+              <div class="star">
+                
+              </div>
+              <p class="card-text"><%= product.priceCent %></p>
+            </div>
+            <button type="button"
+            class="btn btn-primary px-4 addToCart"
+            data-product-name="<%= product.name %>"
+            ><i class="fs-4 bi bi-cart2"></i></button>
+          </div>
+        </div>
+      </div>
+    <% }); %>
+  </div>
 </div>
-
-<script type="module" src="/public/js/index.js"></script>

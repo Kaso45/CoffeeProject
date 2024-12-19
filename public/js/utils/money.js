@@ -1,5 +1,8 @@
-export function formatCurrency(priceCents) {
-  return (Math.round(priceCents) / 100).toFixed(2);
+const numeral = require(`numeral`);
+
+function formatCurrency(price) {
+  let amount = numeral(price).format("$0,0.00");
+  return amount;
 }
 
-export default formatCurrency;
+module.exports = { formatCurrency };

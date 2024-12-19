@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const productController = require('../controllers/productController');
+const {formatCurrency} = require(`../public/js/utils/money`)
+const {generateStarRating} = require(`../public/js/utils/stars`);
 
 // Lấy beans
 router.get('/products/beans', productController.getBeans);
@@ -10,17 +12,17 @@ router.get('/products/grounds', productController.getGrounds);
 router.get('/products/capsules', productController.getCapsules);
 
 // 3 types
-router.get('/products/productCategory', (res,req) => {
-    res.render('layouts/products/products category')
+router.get('/products', (req,res) => {
+    res.render('layouts/products/products-categories/products.ejs')
 })
 
 //////// từng sản phẩm 
 //// beans
-router.get('/products/beans/aroma' ,(req,res) => {
+router.get('/products/beans/aromacraft' ,(req,res) => {
     res.render('layouts/products/beans/aroma')
 })
-router.get('/products/beans/bitdrew' ,(req,res) => {
-    res.render('layouts/products/beans/bitdrew')
+router.get('/products/beans/bitbrew' ,(req,res) => {
+    res.render('layouts/products/beans/bitbrew')
 })
 router.get('/products/beans/casa' ,(req,res) => {
     res.render('layouts/products/beans/casa')
@@ -28,7 +30,7 @@ router.get('/products/beans/casa' ,(req,res) => {
 router.get('/products/beans/koko' ,(req,res) => {
     res.render('layouts/products/beans/koko')
 })
-router.get('/products/beans/navy' ,(req,res) => {
+router.get('/products/beans/navybrew' ,(req,res) => {
     res.render('layouts/products/beans/navy')
 })
 router.get('/products/beans/zenbean' ,(req,res) => {
@@ -54,42 +56,62 @@ router.get('/products/capsules/velvet' ,(req,res) => {
     res.render('layouts/products/capsules/velvet')
 })
 //// grounds
-router.get('/products/grounds/aroma' ,(req,res) => {
-    res.render('layouts/products/grounds/aroma')
+router.get('/products/grounds/aromacraft-g' ,(req,res) => {
+    res.render('layouts/products/grounds/aroma-g')
 })
-router.get('/products/grounds/bitdrew' ,(req,res) => {
-    res.render('layouts/products/grounds/bitdrew')
+router.get('/products/grounds/bitbrew-g' ,(req,res) => {
+    res.render('layouts/products/grounds/bitbrew-g')
 })
-router.get('/products/grounds/casa' ,(req,res) => {
-    res.render('layouts/products/grounds/casa')
+router.get('/products/grounds/casa-g' ,(req,res) => {
+    res.render('layouts/products/grounds/casa-g')
 })
-router.get('/products/grounds/koko' ,(req,res) => {
-    res.render('layouts/products/grounds/koko')
+router.get('/products/grounds/koko-g' ,(req,res) => {
+    res.render('layouts/products/grounds/koko-g')
 })
-router.get('/products/grounds/navy' ,(req,res) => {
-    res.render('layouts/products/grounds/navy')
+router.get('/products/grounds/navybrew-g' ,(req,res) => {
+    res.render('layouts/products/grounds/navy-g')
 })
-router.get('/products/grounds/zenbean' ,(req,res) => {
-    res.render('layouts/products/grounds/zenbean')
+router.get('/products/grounds/zenbean-g' ,(req,res) => {
+    res.render('layouts/products/grounds/zenbean-g')
 })
+
+
+
 
 
 // home
 router.get('/', (req,res) => {
-    res.render('layouts/home/homepages')
+    res.render('layouts/home/homepage.ejs', { formatCurrency, generateStarRating })
 })
-// BESTseoler
-router.get('/bestseller', (req,res) => {
-    res.render('layouts/bestseller/bestseller')
-})
+
 // cart
 router.get('/cart', (req,res) => {
     res.render('layouts/cart/cart')
 })
 
-
-
 // contact
+router.get('/contact', (req,res) => {
+    res.render('layouts/contact/contact');
+});
+
+// profile
+router.get(`/profile`, (req,res) => {
+    res.render(`layouts/user/profile/profile.ejs`);
+});
+
+// login
+router.get(`/login`, (req,res) => {
+    res.render(`layouts/user/login/login.ejs`);
+});
+
+//register
+router.get(`/register`, (req,res) => {
+    res.render(`layouts/user/register/register.ejs`);
+});
+
+
+
+
 
 /////// ADMIN
 router.get('/admin',  productController.getProducts);
