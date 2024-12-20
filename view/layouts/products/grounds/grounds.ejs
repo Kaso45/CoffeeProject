@@ -11,9 +11,9 @@
             <div class="des">
               <h5 class="card-title"><%= product.name %></h5>
               <div class="star">
-                
+                <%- generateStarRating(product.rating) %>
               </div>
-              <p class="card-text"><%= product.priceCent %></p>
+              <p class="card-text"><%= formatCurrency(product.priceCent) %></p>
             </div>
             <button type="button"
             class="btn btn-primary px-4 addToCart"
