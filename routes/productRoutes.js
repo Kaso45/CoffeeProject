@@ -125,8 +125,7 @@ router.get('/admin/add', (req, res) => {
   // Thêm sản phẩm mới
   router.post('/admin/products', productController.addProduct);
 
-// // Cập nhật sản phẩm
-// router.put('/admin/editProducts/:id', productController.updateProduct);
+
 
 // Xóa sản phẩm
 router.post('/admin/delete-product/:id', productController.deleteProduct);
