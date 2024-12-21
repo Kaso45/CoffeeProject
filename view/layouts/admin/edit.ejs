@@ -12,39 +12,35 @@
 <body>
   <div class="container my-5">
     <h2 class="mb-4">Edit Product</h2>
-    <form id="editProductForm" action="/admin/edit-product/<%= product._id %>" method="POST">
+    <form id="editProductForm" action="/admin/edit/<%= product._id %>" method="POST">
       <div class="mb-3">
         <label for="productName" class="form-label">Product Name</label>
-        <input type="text" class="form-control" id="productName" required>
+        <input type="text" class="form-control" id="productName" name="name" value="<%= product.name %>" required>
       </div>
       
       <div class="mb-3">
         <label for="productDescription" class="form-label">Description</label>
-        <textarea class="form-control" id="productDescription" rows="3" required></textarea>
+        <textarea class="form-control" id="productDescription" name="de" rows="3" required><%= product.description %></textarea>
       </div>
       
       <div class="mb-3">
         <label for="productPrice" class="form-label">Price</label>
-        <input type="number" class="form-control" id="productPriceCent" min="0" required>
+        <input type="number" class="form-control" id="productPriceCent" name="priceCent" min="0" value="<%= product.price %>" required>
       </div>
       
       <div class="mb-3">
         <label for="productCategory" class="form-label">Category</label>
-        <select class="form-select" id="productCategory" required>
-          <option selected disabled>Select Category</option>
-          <option value="beans">Beans</option>
-          <option value="capsules">Capsule</option>
-          <option value="grounds">Grounds</option>
+        <select class="form-select" id="productCategory" name="category" required>
+          <option disabled>Select Category</option>
+          <option value="beans" <%= product.category === 'beans' ? 'selected' : '' %>>Beans</option>
+          <option value="capsules" <%= product.category === 'capsules' ? 'selected' : '' %>>Capsule</option>
+          <option value="grounds" <%= product.category === 'grounds' ? 'selected' : '' %>>Grounds</option>
         </select>
-      </div>
-      
-      <div class="mb-3">
-        <label for="productImage" class="form-label">Image</label>
-        <input type="file" class="form-control" id="productImage" accept="image/*" required>
       </div>
       
       <button type="submit" class="btn btn-success">Submit Change</button>
     </form>
+    
   </div>
 
   <script src="/public/bootstrap/js/bootstrap.bundle.js"></script>

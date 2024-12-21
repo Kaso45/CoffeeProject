@@ -117,19 +117,24 @@ router.get(`/register`, (req,res) => {
 router.get(`/admin`,  productController.getProducts);
   
 
-
-// Thêm sản phẩm mới
-router.post('/admin/products', productController.addProduct);
+// Hiển thị form thêm sản phẩm
+router.get('/admin/add', (req, res) => {
+    res.render('layouts/admin/add');
+  });
+  
+  // Thêm sản phẩm mới
+  router.post('/admin/products', productController.addProduct);
 
 // // Cập nhật sản phẩm
 // router.put('/admin/editProducts/:id', productController.updateProduct);
 
 // Xóa sản phẩm
-router.post('/delete-product/:id', productController.deleteProduct);
+router.post('/admin/delete-product/:id', productController.deleteProduct);
 
-// Route để render form edit
+// Hiển thị form chỉnh sửa sản phẩm
 router.get('/admin/edit/:id', productController.getEditProduct);
 
-// Route để cập nhật sản phẩm
-router.post('/admin/edit-product', productController.postEditProduct);
-module.exports = router;
+// Xử lý cập nhật sản phẩm
+router.post('/admin/edit/:id', productController.postEditProduct);
+
+module.exports=router;

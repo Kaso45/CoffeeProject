@@ -64,13 +64,20 @@ exports.getProducts = async (req, res) => {
 // Thêm sản phẩm mới
 exports.addProduct = async (req, res) => {
   try {
-    const newProduct = new Product(req.body);
-    await newProduct.save();
-    res.render('layouts/admin/add')
+    // Tạo sản phẩm mới
+    const { name, de, priceCent, category, image } = req.body;
+    const newProduct = new Product({ name, de, priceCent, category, image });
+
+    await newProduct.save(); // Lưu vào database
+
+    // Chuyển hướng về trang admin sau khi thêm sản phẩm
+    res.redirect('/layout/admin');
   } catch (error) {
+    console.error(error);
     res.status(400).json({ message: 'Error adding product' });
   }
 };
+
 
 // // Cập nhật sản phẩm
 // exports.updateProduct = async (req, res) => {
@@ -88,12 +95,12 @@ exports.addProduct = async (req, res) => {
 // Hiển thị form chỉnh sửa sản phẩm
 exports.getEditProduct = async (req, res) => {
     try {
-        const productId = req.params.id; // Lấy ID sản phẩm từ URL
-        const product = await Product.findById(productId); // Lấy sản phẩm từ database
+        const productId = req.params.id; 
+        const product = await Product.findById(productId)
         if (!product) {
             return res.status(404).send('Product not found');
         }
-        res.render('/layouts/admin/edit', { product }); // Render form chỉnh sửa
+        res.render('layouts/admin/edit', { product }); // Render form chỉnh sửa
     } catch (error) {
         console.error(error);
         res.status(500).send('Error retrieving product');
@@ -102,33 +109,33 @@ exports.getEditProduct = async (req, res) => {
 
 // Xử lý cập nhật sản phẩm
 exports.postEditProduct = async (req, res) => {
-    try {
-        const productId = req.params.id; 
-        const { name, description, price, category } = req.body; 
-        await Product.findByIdAndUpdate(productId, {
-            name,
-            description,
-            price,
-            category,
-        }); 
-        res.redirect('/layouts/admin/admin'); // Quay lại trang admin sau khi cập nhật
-    } catch (error) {
-        console.error(error);
-        res.status(500).send('Error updating product');
-    }
+  try {
+      const productId = req.params.id; // Lấy ID từ URL
+      const { name, de, priceCent, category } = req.body; // Lấy dữ liệu từ form
+      await Product.findByIdAndUpdate(productId, {
+          name,
+          de,
+          priceCent,
+          category,
+      });
+      res.redirect('/admin'); // Quay lại trang admin sau khi cập nhật
+  } catch (error) {
+      console.error(error);
+      res.status(500).send('Error updating product');
+  }
 };
 
 
 
 
-// Xóa sản phẩm
+
 exports.deleteProduct = async (req, res) => {
   try {
-      const productId = req.params.id; // Lấy ID từ URL
-      await Product.findByIdAndDelete(productId); // Xóa sản phẩm khỏi database
-      res.redirect('/admin'); // Quay lại trang admin
+      const productId = req.params.id; // Lấy productId từ URL
+      await Product.findByIdAndDelete(productId); // Xóa sản phẩm
+      res.redirect('/admin'); // Quay lại trang admin sau khi xóa
   } catch (error) {
-      console.error(error); // Log lỗi ra console
+      console.error(error);
       res.status(500).send('Error deleting product');
   }
 };
