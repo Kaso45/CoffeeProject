@@ -34,6 +34,10 @@ app.set('views', path.join(__dirname, 'view'));
 //epress-ejs-layout
 app.use(expressLayouts);
 app.set('layout', 'layouts/main');
+// Định nghĩa hàm formatCurrency
+function formatCurrency(priceCent) {
+  return `$${(priceCent / 100).toFixed(2)}`; // Chuyển từ cent sang dollar và định dạng
+}
 
 // //dòng code là bao gồm tất cả routes của các trang (ctrl+click vô chữ route để dẫn tới /routes/index.js)
 // route(app);
