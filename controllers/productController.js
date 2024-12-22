@@ -47,7 +47,7 @@ exports.getCapsules = async (req, res) => {
 exports.getProducts = async (req, res) => {
   try {
     const products = await Product.find();
-    res.render('layouts/admin/admin', { products});
+    res.render('layouts/admin/admin', { products, layout: false});
   } catch (error) {
     res.status(500).json({ message: 'Error retrieving products' });
   }
@@ -81,7 +81,7 @@ exports.getEditProduct = async (req, res) => {
         if (!product) {
             return res.status(404).send('Product not found');
         }
-        res.render('layouts/admin/edit', { product }); // Render form chỉnh sửa
+        res.render('layouts/admin/edit', { product, layout:false }); // Render form chỉnh sửa
     } catch (error) {
         console.error(error);
         res.status(500).send('Error retrieving product');

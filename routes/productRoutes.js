@@ -119,7 +119,7 @@ router.get(`/admin`,  productController.getProducts);
 
 // Hiển thị form thêm sản phẩm
 router.get('/admin/add', (req, res) => {
-    res.render('layouts/admin/add');
+    res.render('layouts/admin/add', {layout:false});
   });
   
   // Thêm sản phẩm mới
