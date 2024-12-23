@@ -56,13 +56,11 @@ exports.getProducts = async (req, res) => {
 // Thêm sản phẩm mới
 exports.addProduct = async (req, res) => {
   try {
-    // Tạo sản phẩm mới
     const { name, de, priceCent, category, image } = req.body;
     const newProduct = new Product({ name, de, priceCent, category, image });
 
     await newProduct.save(); // Lưu vào database
 
-    // Chuyển hướng về trang admin sau khi thêm sản phẩm
     res.redirect('/layout/admin');
   } catch (error) {
     console.error(error);
@@ -81,7 +79,7 @@ exports.getEditProduct = async (req, res) => {
         if (!product) {
             return res.status(404).send('Product not found');
         }
-        res.render('layouts/admin/edit', { product, layout:false }); // Render form chỉnh sửa
+        res.render('layouts/admin/edit', { product, layout:false }); 
     } catch (error) {
         console.error(error);
         res.status(500).send('Error retrieving product');
