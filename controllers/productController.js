@@ -61,7 +61,7 @@ exports.addProduct = async (req, res) => {
 
     await newProduct.save(); // Lưu vào database
 
-    res.redirect('/layout/admin');
+    res.redirect('/admin');
   } catch (error) {
     console.error(error);
     res.status(400).json({ message: 'Error adding product' });
