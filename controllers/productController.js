@@ -1,5 +1,7 @@
 // controllers/productController.js
 const Product = require('../models/Product');
+const {formatCurrency} = require(`../public/js/utils/money`)
+const {generateStarRating} = require(`../public/js/utils/stars`);
 
 
 
@@ -7,7 +9,7 @@ const Product = require('../models/Product');
 exports.getBeans = async (req, res) => {
   try {
     const products = await Product.find( {category: "beans"})
-    res.render('layouts/products/beans/beans', { products });
+    res.render('layouts/products/beans/beans', { products, formatCurrency, generateStarRating });
     
   } catch (error) {
     res.status(500).json({ message: 'Error retrieving products' });
@@ -58,12 +60,13 @@ exports.addProduct = async (req, res) => {
   try {
     const { name, de, priceCent, category} = req.body;
 
-    const image = req.file.filename;
+    const image = '/uploads/' + req.file.filename;
     const newProduct = new Product({ name, de, priceCent, category, image });
 
     await newProduct.save(); // Lưu vào database
 
     res.redirect('/admin');
+    console.log(req.body)
   } catch (error) {
     console.error(error);
     res.status(400).json({ message: 'Error adding product' });

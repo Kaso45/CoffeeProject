@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { upload } = require('../app')
-
+const upload = require('../middlewares/uploadMiddleware')
 const productController = require('../controllers/productController');
 const {formatCurrency} = require(`../public/js/utils/money`)
 const {generateStarRating} = require(`../public/js/utils/stars`);
