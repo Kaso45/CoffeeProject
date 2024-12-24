@@ -6,7 +6,6 @@ const cors = require('cors');
 const bcrypt = require('bcrypt');
 const dotenv = require('dotenv');
 const cookieParser = require('cookie-parser');
-const authRoute = require('./routes/auth');
 const expressLayouts = require('express-ejs-layouts');
 const PORT = 3000;
 
@@ -15,7 +14,6 @@ const PORT = 3000;
 
 // import
 const route = require(`./routes/productRoutes`);
-=======
 dotenv.config();
 
 app.use(cors());
