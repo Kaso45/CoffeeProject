@@ -4,11 +4,14 @@ const userSchema = new mongoose.Schema({
   username: {
     type: String,
     required: true,
-    unique: true
+    unique: true,
+    minlength: 6,
+    maxlength: 20,
   },
   password: {
     type: String,
     required: true,
+    minlength: 6,
   },
   cart: {
     items: [
@@ -18,6 +21,8 @@ const userSchema = new mongoose.Schema({
       }
     ]
   }
+  { timestamps: true } // Automatically adds `createdAt` and `updatedAt` fields
+);
 });
 
 module.exports = mongoose.model('User', userSchema);
