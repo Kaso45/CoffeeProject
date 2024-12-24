@@ -1,5 +1,5 @@
 <!--san pham-->
-<h1 class="text-center p-5">COFFEE BEANS</h1>
+<h1 class="text-center p-5">BEANS</h1>
 <div class="container-fluid">
   <div class="row">
     <!--render san pham-->
@@ -7,7 +7,7 @@
     <div class="col-12 col-sm-6 col-md-4">
       <div class="pro-container card mb-4">
         <a
-          href="/products/beans/<%= product.name.replace(/\s+/g, '').toLowerCase() %>"
+          href="/products/beans/<%= product.name %>"
         >
           <img
             src="<%= product.image %>"
@@ -19,7 +19,7 @@
           <div class="des">
             <a
               class="text-decoration-none"
-              href="/products/beans/<%= product.name.replace(/\s+/g, '').toLowerCase() %>"
+              href="/products/beans/<%= product.name %>"
             >
               <h5 class="card-title"><%= product.name %></h5>
             </a>

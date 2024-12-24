@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-brown px-3">
     <div class="container-fluid">
       <a class="navbar-brand" href="/">
-        <img src="/images/logo.png" alt="The Coffee Corner logo" width="50" height="50" class="img-fluid"/>
+        <img src="/images/logo.png" alt="The Coffee Corner logo" width="50" height="50" class="img-fluid" />
         <span class="navbar-text">The Coffee Corner</span>
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
@@ -21,20 +21,26 @@
           </li>
         </ul>
         <ul class="navbar-nav ms-auto d-flex flex-row align-items-center">
-
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
-                <i class="bi bi-person-circle"></i> asdfasdf
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="/profile">Profile</a></li>
-                <li><a class="dropdown-item" href="/login">Logout</a></li>
-              </ul>
-            </li>
-
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
+              <i class="bi bi-person-circle"></i> asdfasdf
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/profile">Profile</a></li>
+              <li><a class="dropdown-item" href="/login">Logout</a></li>
+            </ul>
+          </li>
           <li class="nav-item position-relative">
-            <a class="nav-link" href="/cart"><i class="bi bi-bag fs-5"></i></a>
-            <span class="cart-quantity position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+            <a class="nav-link" href="/cart">
+              <i class="bi bi-bag fs-5"></i>
+              <% if (typeof cartQuantity !== "undefined" && cartQuantity.length > 0) { %>
+                <span class="cart-quantity position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                  <%= cartQuantity.length %>
+                </span>
+              <% } else { %>
+                <span class="cart-quantity position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+              <% } %>
+            </a>
           </li>
         </ul>
       </div>
