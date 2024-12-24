@@ -34,55 +34,10 @@ app.set('views', path.join(__dirname, 'view'));
 //epress-ejs-layout
 app.use(expressLayouts);
 app.set('layout', 'layouts/main');
-// Định nghĩa hàm formatCurrency
-function formatCurrency(priceCent) {
-  return `$${(priceCent / 100).toFixed(2)}`; // Chuyển từ cent sang dollar và định dạng
-}
 
 // //dòng code là bao gồm tất cả routes của các trang (ctrl+click vô chữ route để dẫn tới /routes/index.js)
 // route(app);
 app.use(route)
-
-//trang home
-app.get(`/`, route);
-
-//contact
-app.get(`/contact`, route);
-
-//trang phan loai
-app.get(`/products`, route);
-  //trang beans
-  app.get(`/products/beans`, route);
-    // trang cua tung san pham
-    app.get(`/products/beans/aromacraft`, route);
-    app.get(`/products/beans/bitbrew`, route);
-    app.get(`/products/beans/casa`, route);
-    app.get(`/products/beans/koko`, route);
-    app.get(`/products/beans/navybrew`, route);
-    app.get(`/products/beans/zenbean`, route);
-  //trang capsules
-  app.get(`/products/capsules`, route);
-    //trang tung san pham
-    app.get(`/products/capsules/espresso`, route);
-    app.get(`/products/capsules/buno`, route);
-    app.get(`/products/capsules/heartblend`, route);
-    app.get(`/products/capsules/cosmo`, route);
-    app.get(`/products/capsules/pike`, route);
-    app.get(`/products/capsules/velvet`, route);
-  //trang grounds
-  app.get(`/products/grounds`, route);
-    //trang tung san pham
-    app.get(`/products/grounds/aromacraft-g`, route);
-    app.get(`/products/grounds/bitbrew-g`, route);
-    app.get(`/products/grounds/casa-g`, route);
-    app.get(`/products/grounds/koko-g`, route);
-    app.get(`/products/grounds/navybrew-g`, route);
-    app.get(`/products/grounds/zenbean-g`, route);
-app.get(`/profile`, route);
-app.get(`/cart`, route);
-app.get(`/brewguides`, route);
-app.get(`/login`, route);
-app.get(`/register`, route);
 
 // Khởi chạy server
 app.listen(PORT, () => {

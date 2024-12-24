@@ -1,27 +1,41 @@
 <!--san pham-->
-<h1 class="text-center p-5">COFFEE BEANS</h1>
+<h1 class="text-center p-5">GROUNDS</h1>
 <div class="container-fluid">
   <div class="row">
     <!--render san pham-->
     <% products.forEach(product => { %>
-      <div class="col-12 col-sm-6 col-md-4">
-        <div class="pro-container card mb-4">
-          <img src="<%= product.image %>" class="card-img-top" alt="<%= product.name %>">
-          <div class="card-body d-flex justify-content-between">
-            <div class="des">
+    <div class="col-12 col-sm-6 col-md-4">
+      <div class="pro-container card mb-4">
+        <a
+          href="/products/beans/<%= product.name %>"
+        >
+          <img
+            src="<%= product.image %>"
+            class="card-img-top"
+            alt="<%= product.name %>"
+          />
+        </a>
+        <div class="card-body d-flex justify-content-between">
+          <div class="des">
+            <a
+              class="text-decoration-none"
+              href="/products/beans/<%= product.name %>"
+            >
               <h5 class="card-title"><%= product.name %></h5>
-              <div class="star">
-                <%- generateStarRating(product.rating) %>
-              </div>
-              <p class="card-text"><%= formatCurrency(product.priceCent) %></p>
-            </div>
-            <button type="button"
-            class="btn btn-primary px-4 addToCart"
-            data-product-name="${product.name}"
-            ><i class="fs-4 bi bi-cart2"></i></button>
+            </a>
+            <div class="star"><%- generateStarRating(product.rating) %></div>
+            <p class="card-text"><%= formatCurrency(product.priceCent) %></p>
           </div>
+          <button
+            type="button"
+            class="btn btn-primary px-4 addToCart"
+            data-product-name="<%= product.name %>"
+          >
+            <i class="fs-4 bi bi-cart2"></i>
+          </button>
         </div>
       </div>
+    </div>
     <% }); %>
   </div>
 </div>

@@ -1,5 +1,8 @@
 // controllers/productController.js
+const mongoose = require('mongoose');
 const Product = require('../models/Product');
+const {formatCurrency} = require(`../public/js/utils/money`)
+const {generateStarRating} = require(`../public/js/utils/stars`);
 
 // // Lấy tất cả sản phẩm
 // exports.getProducts = async (req, res) => {
@@ -11,11 +14,30 @@ const Product = require('../models/Product');
 //   }
 // };
 
+// route chi tiết cho từng sản phẩm
+exports.getDetails = async (req, res) => {
+  try {
+    const productName = req.params.name;
+    const product = await Product.findOne({ name: productName });
+
+    if (product) {
+        res.render('layouts/products/product-details.ejs', { products: product, formatCurrency, generateStarRating });
+    } else {
+        res.status(404).send('Sản phẩm không tồn tại');
+    }
+  } catch (err) {
+      console.error(err);
+      res.status(500).send('Lỗi máy chủ');
+  }
+}
+
+
+
 // lấy beans:
 exports.getBeans = async (req, res) => {
   try {
     const products = await Product.find( {category: "beans"})
-    res.render('layouts/products/beans/beans', { products });
+    res.render('layouts/products/beans/beans', { products, formatCurrency, generateStarRating });
     
   } catch (error) {
     res.status(500).json({ message: 'Error retrieving products' });
@@ -28,7 +50,7 @@ exports.getBeans = async (req, res) => {
 exports.getGrounds = async (req, res) => {
   try { 
    const products = await Product.find({category: "grounds" }) 
-   res.render('layouts/products/grounds/grounds', {products})
+   res.render('layouts/products/grounds/grounds', { products, formatCurrency, generateStarRating })
     
   } catch (error) {
     res.status(500).json({ message: 'Error retrieving products' });
@@ -40,7 +62,7 @@ exports.getGrounds = async (req, res) => {
 exports.getCapsules = async (req, res) => {
   try { 
    const products = await Product.find({category: "capsules" }) 
-   res.render('layouts/products/capsules/capsules', {products})
+   res.render('layouts/products/capsules/capsules', { products, formatCurrency, generateStarRating })
     
   } catch (error) {
     res.status(500).json({ message: 'Error retrieving products' });
@@ -55,7 +77,7 @@ exports.getCapsules = async (req, res) => {
 exports.getProducts = async (req, res) => {
   try {
     const products = await Product.find();
-    res.render('layouts/admin/admin', { products});
+    res.render('layouts/admin/admin', { products, formatCurrency, layout: false });
   } catch (error) {
     res.status(500).json({ message: 'Error retrieving products' });
   }

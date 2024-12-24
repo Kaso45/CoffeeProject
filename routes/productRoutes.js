@@ -18,65 +18,13 @@ router.get('/products', (req,res) => {
 
 //////// từng sản phẩm 
 //// beans
-router.get('/products/beans/aromacraft' ,(req,res) => {
-    res.render('layouts/products/beans/aroma')
-})
-router.get('/products/beans/bitbrew' ,(req,res) => {
-    res.render('layouts/products/beans/bitbrew')
-})
-router.get('/products/beans/casa' ,(req,res) => {
-    res.render('layouts/products/beans/casa')
-})
-router.get('/products/beans/koko' ,(req,res) => {
-    res.render('layouts/products/beans/koko')
-})
-router.get('/products/beans/navybrew' ,(req,res) => {
-    res.render('layouts/products/beans/navy')
-})
-router.get('/products/beans/zenbean' ,(req,res) => {
-    res.render('layouts/products/beans/zenbean')
-})
-//// capsules
-router.get('/products/capsules/buno' ,(req,res) => {
-    res.render('layouts/products/capsules/buno')
-})
-router.get('/products/capsules/cosmo' ,(req,res) => {
-    res.render('layouts/products/capsules/cosmo')
-})
-router.get('/products/capsules/espresso' ,(req,res) => {
-    res.render('layouts/products/capsules/espresso')
-})
-router.get('/products/capsules/heartblend' ,(req,res) => {
-    res.render('layouts/products/capsules/heartblend')
-})
-router.get('/products/capsules/pike' ,(req,res) => {
-    res.render('layouts/products/capsules/pike')
-})
-router.get('/products/capsules/velvet' ,(req,res) => {
-    res.render('layouts/products/capsules/velvet')
-})
-//// grounds
-router.get('/products/grounds/aromacraft-g' ,(req,res) => {
-    res.render('layouts/products/grounds/aroma-g')
-})
-router.get('/products/grounds/bitbrew-g' ,(req,res) => {
-    res.render('layouts/products/grounds/bitbrew-g')
-})
-router.get('/products/grounds/casa-g' ,(req,res) => {
-    res.render('layouts/products/grounds/casa-g')
-})
-router.get('/products/grounds/koko-g' ,(req,res) => {
-    res.render('layouts/products/grounds/koko-g')
-})
-router.get('/products/grounds/navybrew-g' ,(req,res) => {
-    res.render('layouts/products/grounds/navy-g')
-})
-router.get('/products/grounds/zenbean-g' ,(req,res) => {
-    res.render('layouts/products/grounds/zenbean-g')
-})
+router.get('/products/beans/:name', productController.getDetails);
 
+// grounds
+router.get('/products/grounds/:name', productController.getDetails);
 
-
+//capsules
+router.get('/products/capsules/:name', productController.getDetails);
 
 
 // home
@@ -109,6 +57,10 @@ router.get(`/register`, (req,res) => {
     res.render(`layouts/user/register/register.ejs`);
 });
 
+// brew guides
+router.get(`/brewguides`, (req,res) => {
+    res.render(`layouts/brewguide/brewguide.ejs`)
+});
 
 
 
