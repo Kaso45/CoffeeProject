@@ -56,7 +56,9 @@ exports.getProducts = async (req, res) => {
 // Thêm sản phẩm mới
 exports.addProduct = async (req, res) => {
   try {
-    const { name, de, priceCent, category, image } = req.body;
+    const { name, de, priceCent, category} = req.body;
+
+    const image = req.file.filename;
     const newProduct = new Product({ name, de, priceCent, category, image });
 
     await newProduct.save(); // Lưu vào database

@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const { upload } = require('../app')
+
 const productController = require('../controllers/productController');
 const {formatCurrency} = require(`../public/js/utils/money`)
 const {generateStarRating} = require(`../public/js/utils/stars`);
@@ -123,7 +125,7 @@ router.get('/admin/add', (req, res) => {
   });
   
   // Thêm sản phẩm mới
-router.post('/admin/products', productController.addProduct);
+router.post('/admin/products',upload.single('image'), productController.addProduct);
 
 // Xóa sản phẩm
 router.post('/admin/delete-product/:id', productController.deleteProduct);

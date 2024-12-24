@@ -4,9 +4,59 @@ const mongoose = require('mongoose');
 const methodOverride = require('method-override');
 const app = express();
 const expressLayouts = require('express-ejs-layouts');
+const multer = require('multer');
+const route = require(`./routes/productRoutes`);
 const PORT = 3000;
 
-const route = require(`./routes/productRoutes`);
+
+
+
+//tro toi file css
+app.use(express.static(path.join(__dirname, `public`)));
+
+app.use(express.urlencoded({extended:true}));
+app.use(express.json());
+
+//template engine
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'view'));
+
+
+//khai báo chỗ lưu ảnh đã up: 
+
+const storage = multer.diskStorage({
+  destination: function(req, file, cb){
+    cb(null, 'public/uploads/')        // nơi lưu trữ ảnh up vô
+  },
+  filename: function(req, file, cb){    // đặt tên cho file ảnh 
+    // vì phải có tên độc quyền nên settime cho tên
+    cb(null, Date.now() + path.extname(file.originalname)) 
+    // khúc extname cái tên file ở cuối như là .txt hay .jpg
+    
+  }
+})
+
+const upload = multer({
+  storage: storage,
+  fileFilter: (req, file, cb) => {
+    const fileTypes = /jpg|jpeg|png/   // xác định cái loại mà cho phép
+    // gọi cái tên cuối ra để test 
+    const extname = fileTypes.test(path.extname(file.originalname).toLowerCase())
+    
+
+  // test mimetype: 
+  const mimetype = fileTypes.test(file.mimetype)
+
+  if (extname && mimetype) {
+    cb(null, true);
+  } else {
+    cb(new Error('Only images are allowed'));
+  }
+  },
+})
+
+
+
 
 // import những thứ đã xuất ra từ /routes/index.js
 // const route = require('./routes');
@@ -21,15 +71,6 @@ mongoose.connect('mongodb+srv://project-management:12345nhom4@cluster0.kgyvd.mon
   console.log('MongoDB connection error: ', err);
 });
 
-//tro toi file css
-app.use(express.static(path.join(__dirname, `public`)));
-
-app.use(express.urlencoded({extended:true}));
-app.use(express.json());
-
-//template engine
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'view'));
 
 //epress-ejs-layout
 app.use(expressLayouts);
@@ -88,3 +129,5 @@ app.get(`/register`, route);
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
+
+module.exports.upload = upload;
