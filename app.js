@@ -1,8 +1,9 @@
 const path = require(`path`);
 const express = require('express');
 const mongoose = require('mongoose');
-const methodOverride = require('method-override');
+const app = express();
 const cors = require('cors');
+const bcrypt = require('bcrypt');
 const dotenv = require('dotenv');
 const cookieParser = require('cookie-parser');
 const authRoute = require('./routes/auth');
@@ -10,9 +11,7 @@ const expressLayouts = require('express-ejs-layouts');
 const PORT = 3000;
 
 const route = require(`./routes/productRoutes`);
-const bcrypt = require('bcrypt');
 dotenv.config();
-const app = express();
 
 app.use(cors());
 app.use(cookieParser());
@@ -45,50 +44,6 @@ app.set('layout', 'layouts/main');
 // //dòng code là bao gồm tất cả routes của các trang (ctrl+click vô chữ route để dẫn tới /routes/index.js)
 // route(app);
 app.use(route)
-
-//trang home
-app.get(`/`, route);
-
-//Route
-app.use("v1/auth", authRoute);
-
-//contact
-app.get(`/contact`, route);
-
-//trang phan loai
-app.get(`/products`, route);
-  //trang beans
-  app.get(`/products/beans`, route);
-    // trang cua tung san pham
-    app.get(`/products/beans/aromacraft`, route);
-    app.get(`/products/beans/bitbrew`, route);
-    app.get(`/products/beans/casa`, route);
-    app.get(`/products/beans/koko`, route);
-    app.get(`/products/beans/navybrew`, route);
-    app.get(`/products/beans/zenbean`, route);
-  //trang capsules
-  app.get(`/products/capsules`, route);
-    //trang tung san pham
-    app.get(`/products/capsules/espresso`, route);
-    app.get(`/products/capsules/buno`, route);
-    app.get(`/products/capsules/heartblend`, route);
-    app.get(`/products/capsules/cosmo`, route);
-    app.get(`/products/capsules/pike`, route);
-    app.get(`/products/capsules/velvet`, route);
-  //trang grounds
-  app.get(`/products/grounds`, route);
-    //trang tung san pham
-    app.get(`/products/grounds/aromacraft-g`, route);
-    app.get(`/products/grounds/bitbrew-g`, route);
-    app.get(`/products/grounds/casa-g`, route);
-    app.get(`/products/grounds/koko-g`, route);
-    app.get(`/products/grounds/navybrew-g`, route);
-    app.get(`/products/grounds/zenbean-g`, route);
-app.get(`/profile`, route);
-app.get(`/cart`, route);
-app.get(`/brewguides`, route);
-app.get(`/login`, route);
-app.get(`/register`, route);
 
 // Khởi chạy server
 app.listen(PORT, () => {
