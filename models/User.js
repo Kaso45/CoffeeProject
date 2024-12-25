@@ -1,23 +1,22 @@
 const mongoose = require('mongoose');
 
+// dtb của users
+const usersDB = mongoose.connection.useDb('users')
+
+
 const userSchema = new mongoose.Schema({
   username: {
     type: String,
     required: true,
-    unique: true
+    unique: true,
+    minlength: 6,
+    maxlength: 20,
   },
   password: {
     type: String,
     required: true,
-  },
-  cart: {
-    items: [
-      {
-        productId: {type: mongoose.Schema.Types.Objected, ref: 'Product', required: true},
-        quantity: {type: Number, required: true} 
-      }
-    ]
+    minlength: 6,
   }
-});
+}, { timestamps: true }); // Phần này đã sửa dấu phẩy và cú pháp
 
-module.exports = mongoose.model('User', userSchema);
+module.exports = usersDB.model('User', userSchema);

@@ -26,13 +26,16 @@
             <div class="star"><%- generateStarRating(product.rating) %></div>
             <p class="card-text"><%= formatCurrency(product.priceCent) %></p>
           </div>
-          <button
-            type="button"
-            class="btn btn-primary px-4 addToCart"
-            data-product-name="<%= product.name %>"
-          >
-            <i class="fs-4 bi bi-cart2"></i>
-          </button>
+          <form action="cart/add-to-cart" method="post">
+            <button
+              type="submit"
+              class="btn btn-primary px-4 addToCart"
+              data-product-name="<%= product.name %>"
+              data-product-id="<%= product._id %>"
+            >
+              <i class="fs-4 bi bi-cart2"></i>
+            </button>
+          </form>
         </div>
       </div>
     </div>

@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const upload = require('../middlewares/uploadMiddleware')
 const productController = require('../controllers/productController');
 const {formatCurrency} = require(`../public/js/utils/money`)
 const {generateStarRating} = require(`../public/js/utils/stars`);
@@ -30,11 +31,6 @@ router.get('/products/capsules/:name', productController.getDetails);
 // home
 router.get('/', (req,res) => {
     res.render('layouts/home/homepage.ejs', { formatCurrency, generateStarRating })
-})
-
-// cart
-router.get('/cart', (req,res) => {
-    res.render('layouts/cart/cart')
 })
 
 // contact
@@ -71,13 +67,11 @@ router.get(`/admin`,  productController.getProducts);
 
 // Hiển thị form thêm sản phẩm
 router.get('/admin/add', (req, res) => {
-    res.render('layouts/admin/add');
+    res.render('layouts/admin/add', {layout:false});
   });
   
   // Thêm sản phẩm mới
-  router.post('/admin/products', productController.addProduct);
-
-
+router.post('/admin/products',upload.single('image'), productController.addProduct);
 
 // Xóa sản phẩm
 router.post('/admin/delete-product/:id', productController.deleteProduct);

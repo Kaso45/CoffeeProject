@@ -1,31 +1,29 @@
 const mongoose = require('mongoose');
 
+// kết lối riêng tới product dtb
+const productsDB = mongoose.connection.useDb('products')
+
+
 const productSchema = new mongoose.Schema({
   category: {
     type: String,
-    required: true
   },
   image: {
     type: String,
-    required: true
   },
   name: {
     type: String,
-    required: true
   },
   rating: {
     type: Number,
-    required: true
   },
   priceCent: {
     type: Number,
-    required: true
   },
 
   de: {
     type: String,
-    required: true
-  },
+  }
 });
 
-module.exports = mongoose.model('Product', productSchema);
+module.exports = productsDB.model('Product', productSchema);

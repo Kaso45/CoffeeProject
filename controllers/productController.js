@@ -4,16 +4,6 @@ const Product = require('../models/Product');
 const {formatCurrency} = require(`../public/js/utils/money`)
 const {generateStarRating} = require(`../public/js/utils/stars`);
 
-// // Lấy tất cả sản phẩm
-// exports.getProducts = async (req, res) => {
-//   try {
-//     const products = await Product.find();
-//     res.render('layouts/products/products category/products', { products });
-//   } catch (error) {
-//     res.status(500).json({ message: 'Error retrieving products' });
-//   }
-// };
-
 // route chi tiết cho từng sản phẩm
 exports.getDetails = async (req, res) => {
   try {
@@ -86,14 +76,15 @@ exports.getProducts = async (req, res) => {
 // Thêm sản phẩm mới
 exports.addProduct = async (req, res) => {
   try {
-    // Tạo sản phẩm mới
-    const { name, de, priceCent, category, image } = req.body;
+    const { name, de, priceCent, category} = req.body;
+
+    const image = '/uploads/' + req.file.filename;
     const newProduct = new Product({ name, de, priceCent, category, image });
 
     await newProduct.save(); // Lưu vào database
 
-    // Chuyển hướng về trang admin sau khi thêm sản phẩm
-    res.redirect('/layout/admin');
+    res.redirect('/admin');
+    console.log(req.body)
   } catch (error) {
     console.error(error);
     res.status(400).json({ message: 'Error adding product' });
@@ -101,17 +92,6 @@ exports.addProduct = async (req, res) => {
 };
 
 
-// // Cập nhật sản phẩm
-// exports.updateProduct = async (req, res) => {
-//   try {
-//     const product = await Product.findByIdAndUpdate(req.params.id, req.body, { new: true });
-//     res.status(200).json(product);  // Trả về sản phẩm đã cập nhật dưới dạng JSON
-//   } catch (error) {
-//     res.status(400).json({ message: 'Error updating product' });
-//   }
-// };
-
-// Lấy thông tin sản phẩm để hiển thị form edit
 
 
 // Hiển thị form chỉnh sửa sản phẩm
@@ -122,7 +102,7 @@ exports.getEditProduct = async (req, res) => {
         if (!product) {
             return res.status(404).send('Product not found');
         }
-        res.render('layouts/admin/edit', { product }); // Render form chỉnh sửa
+        res.render('layouts/admin/edit', { product, layout:false }); 
     } catch (error) {
         console.error(error);
         res.status(500).send('Error retrieving product');
