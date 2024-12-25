@@ -10,7 +10,7 @@ const  authController = {
            if (req.body.password != req.body.confirmPassword) {
             return res.status(400).json({ message: "Password kh match ròi" })
            }
-           
+
           const salt = await bcrypt.genSalt(10);
           const hashed = await bcrypt.hash(req.body.password, salt);
 
@@ -22,7 +22,7 @@ const  authController = {
 
           //Save to database
           const user = await newUser.save();
-          res.status(200).json(user);
+          res.redirect('/')
           } catch(err){
           res.status(500).json(err);
           }
@@ -43,9 +43,10 @@ const  authController = {
             if(!validPassword) {
                 res.status(404).json('wrong password!');
             }
-            if (user && validPassword){
-                res.status(200).json(user);
-            }
+            // if (user && validPassword){
+            //     res.status(200).json(user);
+            // }
+            res.redirect('/')
         } catch(err){
             res.status(500).json(err);
         }
