@@ -3,12 +3,16 @@ const router = express.Router();
 const cartController = require('../controllers/cartController');
 
 // them vo gio hang
-router.post('/add-to-cart', cartController.addToCart);
-
+router.post('cart/add-to-cart', cartController.addToCart);
 // hien thi gio hang
-router.get('/cart', cartController.cartSummary);
-
+router.get('cart/:userId', cartController.getCart);
 // xoa san pham khoi gio hang
-router.get('/remove-from-cart', cartController.cartRemove);
+router.delete('cart/remove-from-cart', cartController.cartRemove);
+// update san pham
+router.put('cart/update-quantity', cartController.updateProductQuantity);
+// tang so luong san pham
+router.put('cart/increase-quantity', cartController.increaseQuantity)
+//giam so luong san pham
+router.put("/cart/decrease-quantity", cartController.decreaseQuantity);
 
 module.exports = router;

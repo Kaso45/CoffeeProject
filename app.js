@@ -16,6 +16,7 @@ const PORT = 3000;
 const route = require('./routes/index')
 const users = require('./routes/auth')
 const products = require(`./routes/productRoutes`);
+const cart = require('./routes/cartRoutes')
 dotenv.config();
 
 app.use(cors());
@@ -50,6 +51,7 @@ app.set('layout', 'layouts/main');
 app.use(users)
 app.use(products)
 app.use(route)
+app.use(cart)
 
 // Khởi chạy server
 app.listen(PORT, () => {

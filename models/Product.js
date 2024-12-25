@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 // kết lối riêng tới product dtb
- const productsDB = mongoose.connection.useDb('products')
+const productsDB = mongoose.connection.useDb('products')
 
 
 const productSchema = new mongoose.Schema({

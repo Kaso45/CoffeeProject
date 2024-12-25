@@ -16,15 +16,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
     minlength: 6,
-  },
-  cart: {
-    items: [
-      {
-        productId: { type: mongoose.Schema.Types.ObjectId, ref: 'Product'},
-        quantity: { type: Number},
-      },
-    ],
-  },
+  }
 }, { timestamps: true }); // Phần này đã sửa dấu phẩy và cú pháp
 
 module.exports = usersDB.model('User', userSchema);
