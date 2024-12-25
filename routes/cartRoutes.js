@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const cartController = require('../controllers/cartController');
 
+
+
 // them vo gio hang
 router.post('cart/add-to-cart', cartController.addToCart);
 // hien thi gio hang
