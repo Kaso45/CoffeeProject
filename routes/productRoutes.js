@@ -33,11 +33,6 @@ router.get('/', (req,res) => {
     res.render('layouts/home/homepage.ejs', { formatCurrency, generateStarRating })
 })
 
-// cart
-router.get('/cart', (req,res) => {
-    res.render('layouts/cart/cart')
-})
-
 // contact
 router.get('/contact', (req,res) => {
     res.render('layouts/contact/contact');

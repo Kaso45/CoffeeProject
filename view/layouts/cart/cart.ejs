@@ -3,10 +3,10 @@
       <div class="row">
         <!--gio hang-->
         <% cart.forEach(cartItem => { %>
-        <div class="card mb-3 item-container-${matchingProduct.name}">
+        <div class="card mb-3">
           <div class="card-body d-flex gap-4">
             <div class="card-picture">
-              <img src="${matchingProduct.image}" alt="${matchingProduct.name}" width="120" height="120">
+              <img src="<%= cartItem.image %>" alt="<%= cartItem.name %>" width="120" height="120">
             </div>
             <div class="card-content">
               <h5 class="card-title">${matchingProduct.name}</h5>
