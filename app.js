@@ -1,25 +1,31 @@
 const path = require(`path`);
 const express = require('express');
 const mongoose = require('mongoose');
-const methodOverride = require('method-override');
 const app = express();
+const cors = require('cors');
+const bcrypt = require('bcrypt');
+const dotenv = require('dotenv');
+const cookieParser = require('cookie-parser');
+const authRoute = require('./routes/auth');
 const expressLayouts = require('express-ejs-layouts');
 const PORT = 3000;
 
 const route = require(`./routes/productRoutes`);
+dotenv.config();
+
+app.use(cors());
+app.use(cookieParser());
 
 // import những thứ đã xuất ra từ /routes/index.js
 // const route = require('./routes');
 
 // Kết nối MongoDB
-mongoose.connect('mongodb+srv://project-management:12345nhom4@cluster0.kgyvd.mongodb.net/products?retryWrites=true&w=majority&appName=Cluster0', {
+mongoose.connect(process.env.MONGODB_URL, {
   useNewUrlParser: true,
-  useUnifiedTopology: true
-}).then(() => {
-  console.log('Connected to MongoDB');
-}).catch(err => {
-  console.log('MongoDB connection error: ', err);
-});
+  useUnifiedTopology: true,
+})
+  .then(() => console.log('Connected to MongoDB'))
+  .catch(err => console.error('MongoDB connection error:', err));
 
 //tro toi file css
 app.use(express.static(path.join(__dirname, `public`)));
