@@ -5,6 +5,12 @@ const  authController = {
     //REGISTER
     registerUser: async(req,res) => {
         try{
+
+            // check lại cf password
+           if (req.body.password != req.body.confirmPassword) {
+            return res.status(400).json({ message: "Password kh match ròi" })
+           }
+           
           const salt = await bcrypt.genSalt(10);
           const hashed = await bcrypt.hash(req.body.password, salt);
 
@@ -24,6 +30,8 @@ const  authController = {
     //LOGIN
     loginUser: async(req, res)=>{
         try{
+
+
             const user = await User.findOne({username:req.body.username});
             if(!user){
                 res.status(404).json("wrong username!");

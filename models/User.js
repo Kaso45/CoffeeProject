@@ -1,5 +1,9 @@
 const mongoose = require('mongoose');
 
+// dtb của users
+const usersDB = mongoose.connection.useDb('users')
+
+
 const userSchema = new mongoose.Schema({
   username: {
     type: String,
@@ -16,13 +20,11 @@ const userSchema = new mongoose.Schema({
   cart: {
     items: [
       {
-        productId: {type: mongoose.Schema.Types.Objected, ref: 'Product', required: true},
-        quantity: {type: Number, required: true} 
-      }
-    ]
-  }
-  { timestamps: true } // Automatically adds `createdAt` and `updatedAt` fields
-);
-});
+        productId: { type: mongoose.Schema.Types.ObjectId, ref: 'Product', required: true },
+        quantity: { type: Number, required: true },
+      },
+    ],
+  },
+}, { timestamps: true }); // Phần này đã sửa dấu phẩy và cú pháp
 
-module.exports = mongoose.model('User', userSchema);
+module.exports = usersDB.model('User', userSchema);

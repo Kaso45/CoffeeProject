@@ -13,7 +13,9 @@ const PORT = 3000;
 // const route = require('./routes');
 
 // import
-const route = require(`./routes/productRoutes`);
+const route = require('./routes/index')
+const users = require('./routes/auth')
+const products = require(`./routes/productRoutes`);
 dotenv.config();
 
 app.use(cors());
@@ -45,6 +47,8 @@ app.set('layout', 'layouts/main');
 
 // //dòng code là bao gồm tất cả routes của các trang (ctrl+click vô chữ route để dẫn tới /routes/index.js)
 // route(app);
+app.use(users)
+app.use(products)
 app.use(route)
 
 // Khởi chạy server
