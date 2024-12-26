@@ -35,7 +35,7 @@ exports.addToCart = async (req, res) => {
 };
 
 exports.getCart = async (req, res) => {
-  const { userId } = req.session.body;
+  const userId = req.session.body;
   try {
     // const cart = await Cart.findOne({ userId }).populate("products.productId");
     // if (!cart) {
@@ -57,7 +57,7 @@ exports.getCart = async (req, res) => {
 // check giỏ
         const cart = await Cart.findOne({ userId }).populate( 'products.productId' )
         if (!cart || cart.items.length === 0) {
-          return res.render('cart', { cart: { products: [] } });
+          return res.render('layouts/cart/cart.ejs', { cart: { products: [] } });
         }
     
         const cartItems = cart.items.map(item => ({
@@ -67,7 +67,7 @@ exports.getCart = async (req, res) => {
           priceCent: item.productId.price,
           quantity: item.quantity
         }));      
-        res.render('cart', { cart: { products: cartItems } });
+        res.render('layouts/cart/cart.ejs', { cart: { products: cartItems } });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }

@@ -20,9 +20,7 @@ const cartController = require('../controllers/cartController');
 
 // lấy giỏ 
 // router.get('/cart', cartController.getCart)
-router.get("/cart",(req,res) => {
-    res.render(`layouts/products/products-categories/products.ejs`);
-  }) 
+router.get("/cart", cartController.getCart) 
 //thêm vô
 router.post('/cart/add', cartController.addToCart)
 

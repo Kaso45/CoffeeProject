@@ -27,7 +27,6 @@ app.use(
 
 
 // import
-const route = require('./routes/index')
 const users = require('./routes/auth')
 const products = require(`./routes/productRoutes`);
 const cart = require('./routes/cartRoutes')
@@ -64,7 +63,6 @@ app.set('layout', 'layouts/main');
 // route(app);
 app.use(users)
 app.use(products)
-app.use(route)
 app.use(cart)
 
 // Khởi chạy server
