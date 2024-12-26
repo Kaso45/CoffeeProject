@@ -9,6 +9,7 @@ const cookieParser = require('cookie-parser');
 const expressLayouts = require('express-ejs-layouts');
 const MongoStore = require('connect-mongo');
 const session = require('express-session');
+
 const PORT = 3000;
 
 // import những thứ đã xuất ra từ /routes/index.js
@@ -45,6 +46,10 @@ app.use(express.json());
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'view'));
 
+app.use((req,res,next) => {
+  res.locals.user = req.session.user
+  next();
+})
 
 // Kết nối MongoDB
 mongoose.connect(process.env.MONGODB_URL, {
