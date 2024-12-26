@@ -6,9 +6,7 @@
     <% products.forEach(product => { %>
     <div class="col-12 col-sm-6 col-md-4">
       <div class="pro-container card mb-4">
-        <a
-          href="/products/beans/<%= product.name %>"
-        >
+        <a href="/products/beans/<%= product.name %>">
           <img
             src="<%= product.image %>"
             class="card-img-top"
@@ -26,14 +24,13 @@
             <div class="star"><%- generateStarRating(product.rating) %></div>
             <p class="card-text"><%= formatCurrency(product.priceCent) %></p>
           </div>
-          <form action="cart/add-to-cart" method="post">
-            <button
-              type="submit"
-              class="btn btn-primary px-4 addToCart"
-              data-product-name="<%= product.name %>"
-              data-product-id="<%= product._id %>"
-            >
-              <i class="fs-4 bi bi-cart2"></i>
+          <form action="/cart/add" method="post">
+            <!-- Gửi productId dưới dạng hidden input -->
+            <input type="hidden" name="productId" value="<%= product._id %>" />
+            <input type="hidden" name="quantity" value="1" />
+            <!-- Mặc định số lượng là 1 -->
+            <button type="submit" class="btn btn-primary px-4 addToCart">
+              <i class="fs-4 bi bi-cart2"></i> 
             </button>
           </form>
         </div>

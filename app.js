@@ -7,14 +7,27 @@ const bcrypt = require('bcrypt');
 const dotenv = require('dotenv');
 const cookieParser = require('cookie-parser');
 const expressLayouts = require('express-ejs-layouts');
-const session = require('express-session')
+const MongoStore = require('connect-mongo');
+const session = require('express-session');
+
 const PORT = 3000;
 
 // import những thứ đã xuất ra từ /routes/index.js
 // const route = require('./routes');
 
+
+app.use(
+  session({
+    secret: 'coffeeProjectNhom4',
+    resave: false,
+    saveUninitialized: false,
+    store: MongoStore.create({ mongoUrl: 'mongodb+srv://project-management:12345nhom4@cluster0.kgyvd.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0' }),
+    cookie: { maxAge: 1000 * 60 * 60 * 24 }
+  })
+);
+
+
 // import
-const route = require('./routes/index')
 const users = require('./routes/auth')
 const products = require(`./routes/productRoutes`);
 const cart = require('./routes/cartRoutes')
@@ -33,13 +46,6 @@ app.use(express.json());
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'view'));
 
-// session middleware
-app.use(session({
-  secret: 'coffee-project',
-  resave: false,
-  saveUninitialized: false
-}))
-
 app.use((req,res,next) => {
   res.locals.user = req.session.user
   next();
@@ -47,8 +53,8 @@ app.use((req,res,next) => {
 
 // Kết nối MongoDB
 mongoose.connect(process.env.MONGODB_URL, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
+  // useNewUrlParser: true,
+  // useUnifiedTopology: true,
 })
   .then(() => console.log('Connected to MongoDB'))
   .catch(err => console.error('MongoDB connection error:', err));
@@ -62,7 +68,6 @@ app.set('layout', 'layouts/main');
 // route(app);
 app.use(users)
 app.use(products)
-app.use(route)
 app.use(cart)
 
 // Khởi chạy server
