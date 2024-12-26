@@ -7,10 +7,24 @@ const bcrypt = require('bcrypt');
 const dotenv = require('dotenv');
 const cookieParser = require('cookie-parser');
 const expressLayouts = require('express-ejs-layouts');
+const MongoStore = require('connect-mongo');
+const session = require('express-session');
 const PORT = 3000;
 
 // import những thứ đã xuất ra từ /routes/index.js
 // const route = require('./routes');
+
+
+app.use(
+  session({
+    secret: 'coffeeProjectNhom4',
+    resave: false,
+    saveUninitialized: false,
+    store: MongoStore.create({ mongoUrl: 'mongodb+srv://project-management:12345nhom4@cluster0.kgyvd.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0' }),
+    cookie: { maxAge: 1000 * 60 * 60 * 24 }
+  })
+);
+
 
 // import
 const route = require('./routes/index')
@@ -35,8 +49,8 @@ app.set('views', path.join(__dirname, 'view'));
 
 // Kết nối MongoDB
 mongoose.connect(process.env.MONGODB_URL, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
+  // useNewUrlParser: true,
+  // useUnifiedTopology: true,
 })
   .then(() => console.log('Connected to MongoDB'))
   .catch(err => console.error('MongoDB connection error:', err));

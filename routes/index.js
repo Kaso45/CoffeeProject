@@ -27,9 +27,9 @@ function route(app) {
   });
 
   //gio hang
-  app.get('/cart', (req,res) => {
-    res.render('layouts/cart/cart.ejs');
-  });
+  // app.get('/cart', (req,res) => {
+  //   res.render('layouts/cart/cart.ejs');
+  // });
 
   //trang pha che
   app.get(`/brewguides`, (req,res) => {
