@@ -1,73 +1,73 @@
-const User = require("../models/User");
-const Product = require("../models/Product");
-const Cart = require("../models/Cart");
+const User = require('../models/User')
+const Cart = require('../models/User')
+const Product = require('../models/Product')
+const { formatCurrency } = require(`../public/js/utils/money`);
+
+exports.getCart = async (req, res) => {
+  const userId = req.session.user;
+
+  try {
+    const cart = await Cart.findOne({ userId }).populate("products.productId");
+    console.log('Found cart:', cart);
+
+    if (!cart || cart.products.length === 0) {
+      return res.render("layouts/cart/cart.ejs", {
+        cart: { products: [] },
+        formatCurrency,
+      });
+    }
+
+    const cartItems = cart.products.map((item) => ({
+      id: item.productId._id,
+      name: item.productId.name,
+      image: item.productId.image,
+      priceCent: item.productId.priceCent,
+      quantity: item.quantity,
+    }));
+
+    res.render("layouts/cart/cart.ejs", {
+      cart: { products: cartItems },
+      formatCurrency,
+    });
+  } catch (err) {
+    console.error("Cart retrieval error:", err);
+    res.status(500).json({ message: err.message });
+  }
+};
 
 exports.addToCart = async (req, res) => {
   const { productId, quantity } = req.body;
-  const  userId  = req.session.userId;
+  const userId = req.session.user;
 
   if (!userId) {
     return res.status(401).json({ success: false, message: 'User not logged in' });
   }
 
   try {
+    // Find or create cart for user
     let cart = await Cart.findOne({ userId });
     if (!cart) {
       cart = new Cart({ userId, products: [] });
     }
 
-    const existProductIndex = cart.products.findIndex(
+    // Check if product already exists in cart
+    const existingProduct = cart.products.find(
       (item) => item.productId.toString() === productId
     );
-  // Kiểm tra sản phẩm đã tồn tại chưa
-  const existingItem = cart.items.find(item => item.productId === productId);
-  if (existingItem) {
-    existingItem.quantity += parseInt(quantity, 10); // Cập nhật số lượng
-  } else {
-    cart.items.push({ productId, quantity: parseInt(quantity, 10) }); // Thêm sản phẩm mới
-  }
-  
+
+    if (existingProduct) {
+      // Update quantity if product exists
+      existingProduct.quantity += parseInt(quantity, 10);
+    } else {
+      // Add new product if it doesn't exist
+      cart.products.push({ 
+        productId, 
+        quantity: parseInt(quantity, 10) 
+      });
+    }
+    
     await cart.save();
-    res.redirect('back')
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
-};
-
-exports.getCart = async (req, res) => {
-  const userId = req.session.body;
-  try {
-    // const cart = await Cart.findOne({ userId }).populate("products.productId");
-    // if (!cart) {
-    //   res.status(404).json({ message: "Cant find product" });
-    // }
-    
-
-    // const cartData = {
-    //   products: cart.products.map((item) => ({
-    //     productId: item.productId._id,
-    //     image: item.productId.image,
-    //     price: item.productId.price,
-    //     name: item.productId.name,
-    //     quantity: item.quantity,
-    //   })),
-    // };
-    // return res.status(StatusCodes.OK).json(cartData);
-
-// check giỏ
-        const cart = await Cart.findOne({ userId }).populate( 'products.productId' )
-        if (!cart || cart.items.length === 0) {
-          return res.render('layouts/cart/cart.ejs', { cart: { products: [] } });
-        }
-    
-        const cartItems = cart.items.map(item => ({
-          id: item.productId._id,
-          name: item.productId.name,
-          image: item.productId.image,
-          priceCent: item.productId.price,
-          quantity: item.quantity
-        }));      
-        res.render('layouts/cart/cart.ejs', { cart: { products: cartItems } });
+    res.redirect('back');
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
@@ -75,7 +75,7 @@ exports.getCart = async (req, res) => {
 
 exports.cartRemove = async (req, res) => {
   const { productId } = req.body;
-  const  userId  = req.session.userId;
+  const userId = req.session.userId;
   try {
     const cart = await Cart.findOne({ userId });
     if (!cart) {
@@ -85,7 +85,7 @@ exports.cartRemove = async (req, res) => {
       (item) => item.productId && item.productId.toString() !== productId
     );
     await cart.save();
-    res.redirect('/cartss')
+    res.redirect("/cartss");
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
@@ -144,7 +144,7 @@ exports.cartRemove = async (req, res) => {
 //           return res.status(404).json({ message: "Không tìm thấy giỏ hàng !" });
 //       }
 
-//       const product = cart.products.find((item) => 
+//       const product = cart.products.find((item) =>
 //         item.productId.toString() === productId
 //       );
 //       if (!product) {

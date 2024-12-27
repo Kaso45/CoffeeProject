@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
+const Product = require('./Product')
 
-const cartDB = mongoose.connection.useDb('cart')
+const cartDB = mongoose.connection.useDb('products');
 
 const cartSchema = new mongoose.Schema({
   userId: {

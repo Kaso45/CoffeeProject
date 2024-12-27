@@ -1,8 +1,6 @@
 const mongoose = require('mongoose');
 
-// kết lối riêng tới product dtb
-const productsDB = mongoose.connection.useDb('products')
-
+const productDB = mongoose.connection.useDb('products');
 
 const productSchema = new mongoose.Schema({
   category: {
@@ -26,4 +24,4 @@ const productSchema = new mongoose.Schema({
   }
 });
 
-module.exports = productsDB.model('Product', productSchema);
+module.exports = productDB.model('Product', productSchema);
