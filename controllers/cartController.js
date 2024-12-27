@@ -48,6 +48,8 @@ exports.addToCart = async (req, res) => {
     let cart = await Cart.findOne({ userId });
     if (!cart) {
       cart = new Cart({ userId, products: [] });
+    } else if (!Array.isArray(cart.products)) {
+      cart.products = []; // Ensure products array exists
     }
 
     // Check if product already exists in cart
@@ -69,9 +71,11 @@ exports.addToCart = async (req, res) => {
     await cart.save();
     res.redirect('back');
   } catch (err) {
+    console.error('Error adding to cart:', err);
     res.status(500).json({ message: err.message });
   }
 };
+
 
 exports.cartRemove = async (req, res) => {
   const { productId } = req.body;
