@@ -4,33 +4,33 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Add New Product</title>
-  <link rel="icon" type="image/coffeecorner" href="/public/images/logo.png" />
+  <link rel="icon" type="image/coffeecorner" href="/images/logo.png" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <link rel="stylesheet" href="/public/bootstrap/css/bootstrap.css">
-  <link rel="stylesheet" href="/public/css/general.css">
+  <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" href="/css/global.css">
 </head>
 <body>
   <div class="container my-5">
     <h2 class="mb-4">Add New Product</h2>
-    <form id="addProductForm">
+    <form id="addProductForm" id="addProductForm" action="/admin/products" method="POST" enctype="multipart/form-data">
       <div class="mb-3">
         <label for="productName" class="form-label">Product Name</label>
-        <input type="text" class="form-control" id="productName" required>
+        <input type="text" class="form-control" id="productName" name= "name" required>
       </div>
       
       <div class="mb-3">
         <label for="productDescription" class="form-label">Description</label>
-        <textarea class="form-control" id="productDescription" rows="3" required></textarea>
+        <textarea class="form-control" id="productDescription" rows="3"  name="de" required></textarea>
       </div>
       
       <div class="mb-3">
         <label for="productPrice" class="form-label">Price</label>
-        <input type="number" class="form-control" id="productPrice" min="0" required>
+        <input type="number" class="form-control" id="productPrice" min="0" name="priceCent" required>
       </div>
       
       <div class="mb-3">
         <label for="productCategory" class="form-label">Category</label>
-        <select class="form-select" id="productCategory" required>
+        <select class="form-select" id="productCategory" name="category" required>
           <option selected disabled>Select Category</option>
           <option value="beans">Beans</option>
           <option value="capsules">Capsule</option>
@@ -40,13 +40,13 @@
       
       <div class="mb-3">
         <label for="productImage" class="form-label">Image</label>
-        <input type="file" class="form-control" id="productImage" accept="image/*" required>
+        <input type="file" class="form-control" name="image" id="productImage" accept="image/*" required>
       </div>
       
       <button type="submit" class="btn btn-success">Add Product</button>
-    </form>
-  </div>
+    </div>
+  <!-- </div> -->
 
-  <script src="/public/bootstrap/js/bootstrap.bundle.js"></script>
+  <script src="/bootstrap/js/bootstrap.bundle.js"></script>
 </body>
 </html>
