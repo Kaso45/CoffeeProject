@@ -7,4 +7,4 @@ The quickest to get the website is to use docker without having to install depen
 > docker pull kaso45/coffee-project:latest
 
 ## Wesite link 
-You can visit our website via this link [text](https://coffee-project-weld.vercel.app/)
+You can visit our website via this link [The Coffee Corner](https://coffee-project-weld.vercel.app/)
