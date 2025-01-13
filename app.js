@@ -12,9 +12,6 @@ const session = require("express-session");
 
 const port = process.env.PORT || 3000;
 
-// import những thứ đã xuất ra từ /routes/index.js
-// const route = require('./routes');
-
 app.use(
   session({
     secret: "coffeeProjectNhom4",
@@ -56,12 +53,11 @@ app.use((req, res, next) => {
 // Kết nối MongoDB
 connectDB()
 
-//epress-ejs-layout
+// epress-ejs-layout
 app.use(expressLayouts);
 app.set("layout", "layouts/main");
 
-// //dòng code là bao gồm tất cả routes của các trang (ctrl+click vô chữ route để dẫn tới /routes/index.js)
-// route(app);
+// routes
 app.use(users);
 app.use(products);
 app.use(cart);

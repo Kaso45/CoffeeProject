@@ -1,0 +1,10 @@
+services:
+  server:
+    build:
+      context: .
+      target: dev
+    environment:
+      MONGODB_URL: mongodb+srv://project-management:12345nhom4@cluster0.kgyvd.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+    ports:
+      - 3000:3000
+      - 9229:9229

@@ -1,17 +1,17 @@
-const User = require('../models/User')
-const Cart = require('../models/User')
-const Product = require('../models/Product')
+const User = require('../models/User');
+const Cart = require('../models/User');
+const Product = require('../models/Product');
 const { formatCurrency } = require(`../public/js/utils/money`);
 
 exports.getCart = async (req, res) => {
   const userId = req.session.user;
 
   try {
-    const cart = await Cart.findOne({ userId }).populate("products.productId");
+    const cart = await Cart.findOne({ userId }).populate('products.productId');
     console.log('Found cart:', cart);
 
     if (!cart || cart.products.length === 0) {
-      return res.render("layouts/cart/cart.ejs", {
+      return res.render('layouts/cart/cart.ejs', {
         cart: { products: [] },
         formatCurrency,
       });
@@ -25,12 +25,12 @@ exports.getCart = async (req, res) => {
       quantity: item.quantity,
     }));
 
-    res.render("layouts/cart/cart.ejs", {
+    res.render('layouts/cart/cart.ejs', {
       cart: { products: cartItems },
       formatCurrency,
     });
   } catch (err) {
-    console.error("Cart retrieval error:", err);
+    console.error('Cart retrieval error:', err);
     res.status(500).json({ message: err.message });
   }
 };
@@ -40,7 +40,9 @@ exports.addToCart = async (req, res) => {
   const userId = req.session.user;
 
   if (!userId) {
-    return res.status(401).json({ success: false, message: 'User not logged in' });
+    return res
+      .status(401)
+      .json({ success: false, message: 'User not logged in' });
   }
 
   try {
@@ -49,7 +51,7 @@ exports.addToCart = async (req, res) => {
     if (!cart) {
       cart = new Cart({ userId, products: [] });
     } else if (!Array.isArray(cart.products)) {
-      cart.products = []; // Ensure products array exists
+      cart.products = [];
     }
 
     // Check if product already exists in cart
@@ -62,12 +64,12 @@ exports.addToCart = async (req, res) => {
       existingProduct.quantity += parseInt(quantity, 10);
     } else {
       // Add new product if it doesn't exist
-      cart.products.push({ 
-        productId, 
-        quantity: parseInt(quantity, 10) 
+      cart.products.push({
+        productId,
+        quantity: parseInt(quantity, 10),
       });
     }
-    
+
     await cart.save();
     res.redirect('back');
   } catch (err) {
@@ -76,20 +78,19 @@ exports.addToCart = async (req, res) => {
   }
 };
 
-
 exports.cartRemove = async (req, res) => {
   const { productId } = req.body;
   const userId = req.session.userId;
   try {
     const cart = await Cart.findOne({ userId });
     if (!cart) {
-      res.status(404).json({ message: "cant find product" });
+      res.status(404).json({ message: 'cant find product' });
     }
     cart.products = cart.products.filter(
       (item) => item.productId && item.productId.toString() !== productId
     );
     await cart.save();
-    res.redirect("/cartss");
+    res.redirect('/cartss');
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
